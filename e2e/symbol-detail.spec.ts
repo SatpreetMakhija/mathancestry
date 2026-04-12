@@ -79,6 +79,20 @@ test.describe("Symbol Detail Page", () => {
     await expect(page.getByText(/adopted.*1700/i)).toBeVisible();
   });
 
+  test("inventor portrait image renders on detail page", async ({ page }) => {
+    await page.goto("/symbol/equals");
+    const img = page.locator('img[alt="Robert Recorde"]');
+    await expect(img).toBeVisible();
+    await expect(img).toHaveAttribute("src", "/inventors/robert-recorde.jpg");
+  });
+
+  test("symbols without inventor image show fallback initial", async ({ page }) => {
+    await page.goto("/symbol/zero");
+    // Brahmagupta has no image, should show fallback with "B"
+    const fallback = page.locator("text=Creator").locator("..").locator("div.rounded-full", { hasText: "B" });
+    await expect(fallback).toBeVisible();
+  });
+
   test("navigating from bottom of catalog scrolls to top of detail page", async ({ page }) => {
     await page.goto("/");
 

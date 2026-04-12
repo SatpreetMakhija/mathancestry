@@ -61,8 +61,41 @@ export default function SymbolDetail({ symbol }: SymbolDetailProps) {
             <div className="text-xs text-muted uppercase tracking-wide mb-1">
               Creator
             </div>
-            <div className="font-semibold text-ink">{symbol.inventor}</div>
-            <div className="text-sm text-muted">{symbol.nationality}</div>
+            <div className="flex items-center gap-3 mt-1">
+              {symbol.inventorImage ? (
+                <img
+                  src={symbol.inventorImage}
+                  alt={symbol.inventor}
+                  className="w-10 h-10 rounded-full object-cover shrink-0"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).style.display = "none";
+                    (e.target as HTMLImageElement).nextElementSibling?.classList.remove("hidden");
+                  }}
+                />
+              ) : null}
+              <div
+                className={`w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent font-bold text-sm shrink-0 ${symbol.inventorImage ? "hidden" : ""}`}
+              >
+                {symbol.inventor.charAt(0)}
+              </div>
+              <div>
+                <div className="font-semibold text-ink flex items-center gap-1.5">
+                  {symbol.inventor}
+                  {symbol.inventorWiki && (
+                    <a
+                      href={symbol.inventorWiki}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted hover:text-accent transition-colors"
+                      title="Wikipedia"
+                    >
+                      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    </a>
+                  )}
+                </div>
+                <div className="text-sm text-muted">{symbol.nationality}</div>
+              </div>
+            </div>
           </div>
           <div className="bg-parchment rounded-lg p-4">
             <div className="text-xs text-muted uppercase tracking-wide mb-1">

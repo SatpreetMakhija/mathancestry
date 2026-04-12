@@ -9,6 +9,7 @@ export const symbols: MathSymbol[] = [
     year: 1489,
     inventor: "Johannes Widmann",
     nationality: "German",
+    inventorWiki: "https://en.wikipedia.org/wiki/Johannes_Widmann",
     work: "Mercantile Arithmetic (Behende und hubsche Rechenung auff allen Kaufmanschafft)",
     description:
       "Johannes Widmann introduced + and - in his 1489 commercial arithmetic textbook. The symbols likely evolved from Latin abbreviations: 'et' (and) was shortened in merchant manuscripts, with the 't' gradually stylized into +.",
@@ -28,6 +29,7 @@ export const symbols: MathSymbol[] = [
     year: 1489,
     inventor: "Johannes Widmann",
     nationality: "German",
+    inventorWiki: "https://en.wikipedia.org/wiki/Johannes_Widmann",
     work: "Mercantile Arithmetic",
     description:
       "Appearing alongside the plus sign in Widmann's 1489 text, the minus sign likely derived from the tilde (~) that scribes placed over the letter 'm' as an abbreviation of 'minus'. Over time, only the dash remained.",
@@ -47,6 +49,7 @@ export const symbols: MathSymbol[] = [
     year: 1631,
     inventor: "William Oughtred",
     nationality: "English",
+    inventorWiki: "https://en.wikipedia.org/wiki/William_Oughtred",
     work: "Clavis Mathematicae (The Key of Mathematics)",
     description:
       "Oughtred chose the rotated cross \u00d7 for multiplication in his influential algebra textbook. Leibniz later objected, arguing it was too easily confused with the letter x, and proposed the centered dot (\u00b7) instead.",
@@ -57,6 +60,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "Oughtred also invented the slide rule, one of the most important calculation tools before electronic calculators.",
     connections: ["division", "product"],
+    inventorImage: "/inventors/william-oughtred.jpg",
   },
   {
     id: "division",
@@ -66,6 +70,7 @@ export const symbols: MathSymbol[] = [
     year: 1659,
     inventor: "Johann Rahn",
     nationality: "Swiss",
+    inventorWiki: "https://en.wikipedia.org/wiki/Johann_Rahn",
     work: "Teutsche Algebra",
     description:
       "Rahn introduced the obelus \u00f7 for division in his algebra text, likely with guidance from John Pell. The symbol may represent a fraction with dots replacing the numerator and denominator. It remains standard in English-speaking countries but is rarely used in higher mathematics.",
@@ -85,6 +90,7 @@ export const symbols: MathSymbol[] = [
     year: 1557,
     inventor: "Robert Recorde",
     nationality: "Welsh",
+    inventorWiki: "https://en.wikipedia.org/wiki/Robert_Recorde",
     work: "The Whetstone of Witte",
     description:
       "Recorde chose two parallel lines because 'no two things can be more equal.' His original equals sign was much longer than today's version \u2014 about five times as wide. It took over a century for the symbol to be widely adopted.",
@@ -95,6 +101,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "Recorde was a physician to King Edward VI and Queen Mary. He died in debtor's prison in 1558, just a year after publishing the book that immortalized him.",
     connections: ["not-equal", "less-than", "greater-than"],
+    inventorImage: "/inventors/robert-recorde.jpg",
   },
   {
     id: "not-equal",
@@ -104,6 +111,7 @@ export const symbols: MathSymbol[] = [
     year: 1659,
     inventor: "Leonhard Euler",
     nationality: "Swiss",
+    inventorWiki: "https://en.wikipedia.org/wiki/Leonhard_Euler",
     work: "Various manuscripts",
     description:
       "While inequality had been expressed in various ways, the modern \u2260 notation with a slash through the equals sign became standardized through usage in the 18th century. Euler helped popularize many mathematical notations including inequality symbols.",
@@ -113,6 +121,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "The concept of 'not equal' is fundamental to proof by contradiction \u2014 one of the most powerful techniques in all of mathematics.",
     connections: ["equals", "less-than", "greater-than"],
+    inventorImage: "/inventors/leonhard-euler.jpg",
   },
   {
     id: "less-than",
@@ -122,6 +131,7 @@ export const symbols: MathSymbol[] = [
     year: 1631,
     inventor: "Thomas Harriot",
     nationality: "English",
+    inventorWiki: "https://en.wikipedia.org/wiki/Thomas_Harriot",
     work: "Artis Analyticae Praxis (published posthumously)",
     description:
       "Harriot's inequality symbols were published after his death by his editors. His original symbols were more ornate \u2014 the simplified < and > we use today were likely the editors' cleaner versions. The visual logic is elegant: the smaller end points to the smaller quantity.",
@@ -132,6 +142,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "Harriot was also a famous explorer and astronomer \u2014 he mapped the Moon through a telescope months before Galileo, but never published his observations.",
     connections: ["greater-than", "less-equal", "greater-equal"],
+    inventorImage: "/inventors/thomas-harriot.jpg",
   },
   {
     id: "greater-than",
@@ -141,6 +152,7 @@ export const symbols: MathSymbol[] = [
     year: 1631,
     inventor: "Thomas Harriot",
     nationality: "English",
+    inventorWiki: "https://en.wikipedia.org/wiki/Thomas_Harriot",
     work: "Artis Analyticae Praxis (published posthumously)",
     description:
       "Published alongside <, the greater-than sign completes Harriot's paired inequality notation. Together, < and > replaced a variety of verbal and symbolic conventions across European mathematics.",
@@ -151,6 +163,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "Harriot was sent to the New World by Sir Walter Raleigh and became one of the first Englishmen to learn an Algonquian language.",
     connections: ["less-than", "less-equal", "greater-equal"],
+    inventorImage: "/inventors/thomas-harriot.jpg",
   },
   {
     id: "less-equal",
@@ -160,6 +173,7 @@ export const symbols: MathSymbol[] = [
     year: 1734,
     inventor: "Pierre Bouguer",
     nationality: "French",
+    inventorWiki: "https://en.wikipedia.org/wiki/Pierre_Bouguer",
     work: "Sur de nouvelles courbes auxquelles on peut donner le nom de lignes de poursuite",
     description:
       "Bouguer combined the less-than sign with an underline to create \u2264. The notation elegantly merges two concepts: 'less than' (the angled line) and 'equal to' (the horizontal line beneath).",
@@ -169,6 +183,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "Bouguer is also known as the 'father of photometry' \u2014 the science of measuring light. He invented the first instrument for precisely measuring light intensity.",
     connections: ["greater-equal", "less-than", "equals"],
+    inventorImage: "/inventors/pierre-bouguer.jpg",
   },
   {
     id: "greater-equal",
@@ -178,6 +193,7 @@ export const symbols: MathSymbol[] = [
     year: 1734,
     inventor: "Pierre Bouguer",
     nationality: "French",
+    inventorWiki: "https://en.wikipedia.org/wiki/Pierre_Bouguer",
     work: "Sur de nouvelles courbes auxquelles on peut donner le nom de lignes de poursuite",
     description:
       "The companion to \u2264, introduced in the same work by Bouguer. Like its counterpart, it merges the greater-than angle with an equality line.",
@@ -187,6 +203,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "The curved variants \u2266 and \u2267 are sometimes used in East Asian mathematical typography.",
     connections: ["less-equal", "greater-than", "equals"],
+    inventorImage: "/inventors/pierre-bouguer.jpg",
   },
   {
     id: "plus-minus",
@@ -196,6 +213,7 @@ export const symbols: MathSymbol[] = [
     year: 1628,
     inventor: "William Oughtred",
     nationality: "English",
+    inventorWiki: "https://en.wikipedia.org/wiki/William_Oughtred",
     work: "Clavis Mathematicae (early usage context)",
     description:
       "Oughtred stacked the plus and minus signs to create a single symbol indicating 'either positive or negative.' It's now ubiquitous in the quadratic formula and error margins.",
@@ -205,6 +223,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "The reverse sign \u2213 (minus-plus) also exists and is used when two \u00b1 symbols in the same equation should take opposite signs.",
     connections: ["plus", "minus"],
+    inventorImage: "/inventors/william-oughtred.jpg",
   },
   {
     id: "radical",
@@ -214,6 +233,7 @@ export const symbols: MathSymbol[] = [
     year: 1525,
     inventor: "Christoph Rudolff",
     nationality: "German",
+    inventorWiki: "https://en.wikipedia.org/wiki/Christoph_Rudolff",
     work: "Coss",
     description:
       "Rudolff introduced a symbol resembling a lowercase 'r' with a tail for square roots. The symbol may derive from a stylized 'r' for 'radix' (Latin for root). The vinculum (the bar over the radicand) was added later by Ren\u00e9 Descartes in 1637.",
@@ -227,6 +247,7 @@ export const symbols: MathSymbol[] = [
   },
   {
     id: "variable-x",
+
     symbol: "x",
     latex: "x",
     name: "Variable x",
@@ -243,6 +264,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "One popular legend claims 'x' was chosen because a French printer ran low on the less-used letter x, but this is almost certainly a myth. Descartes made a deliberate systematic choice.",
     connections: ["exponent", "function-notation", "radical"],
+    inventorImage: "/inventors/rene-descartes.jpg",
   },
   {
     id: "exponent",
@@ -262,6 +284,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "Curiously, Descartes often wrote 'xx' instead of 'x\u00b2' in his own work, reserving the superscript for cubes and higher powers.",
     connections: ["variable-x", "radical"],
+    inventorImage: "/inventors/rene-descartes.jpg",
   },
   {
     id: "integral",
@@ -271,6 +294,7 @@ export const symbols: MathSymbol[] = [
     year: 1675,
     inventor: "Gottfried Wilhelm Leibniz",
     nationality: "German",
+    inventorWiki: "https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz",
     work: "Unpublished manuscript (published 1686 in Acta Eruditorum)",
     description:
       "Leibniz chose an elongated 'S' for 'summa' (sum), reflecting that integration is a continuous summation. He wrote in his notebook on October 29, 1675: 'It will be useful to write \u222b for omn.' (omnia = all).",
@@ -281,6 +305,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "We know the exact date Leibniz invented this symbol \u2014 October 29, 1675 \u2014 because he meticulously dated his notebooks. This is rare in the history of notation.",
     connections: ["derivative", "partial-derivative", "summation"],
+    inventorImage: "/inventors/gottfried-wilhelm-leibniz.jpg",
   },
   {
     id: "derivative",
@@ -290,6 +315,7 @@ export const symbols: MathSymbol[] = [
     year: 1675,
     inventor: "Gottfried Wilhelm Leibniz",
     nationality: "German",
+    inventorWiki: "https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz",
     work: "Nova Methodus pro Maximis et Minimis (1684)",
     description:
       "Leibniz introduced dy/dx notation for derivatives, treating them as ratios of infinitesimals. This notation proved more versatile than Newton's dot notation and eventually won out in most of mathematics, especially for chain rule and integration applications.",
@@ -300,6 +326,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "The 'war' between Newton's and Leibniz's notation lasted over a century. England's stubborn loyalty to Newton's dots held back British mathematics for generations.",
     connections: ["integral", "partial-derivative", "limit"],
+    inventorImage: "/inventors/gottfried-wilhelm-leibniz.jpg",
   },
   {
     id: "partial-derivative",
@@ -309,6 +336,7 @@ export const symbols: MathSymbol[] = [
     year: 1770,
     inventor: "Marquis de Condorcet",
     nationality: "French",
+    inventorWiki: "https://en.wikipedia.org/wiki/Marquis_de_Condorcet",
     work: "Various mathematical publications",
     description:
       "The curly-d symbol \u2202 was first used by Condorcet and later adopted by Legendre and Jacobi for partial differentiation. It distinguishes partial derivatives (where other variables are held constant) from ordinary derivatives.",
@@ -319,6 +347,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "The symbol \u2202 is sometimes called 'del', 'dee', 'partial dee', or 'dabba' depending on the country and mathematical tradition.",
     connections: ["derivative", "integral"],
+    inventorImage: "/inventors/marquis-de-condorcet.jpg",
   },
   {
     id: "summation",
@@ -328,6 +357,7 @@ export const symbols: MathSymbol[] = [
     year: 1755,
     inventor: "Leonhard Euler",
     nationality: "Swiss",
+    inventorWiki: "https://en.wikipedia.org/wiki/Leonhard_Euler",
     work: "Institutiones Calculi Differentialis",
     description:
       "Euler chose the capital Greek letter sigma (\u03a3) for summation, as 'S' is the first letter of 'summa'. This compact notation replaced lengthy verbal descriptions and made series and sequences far easier to manipulate algebraically.",
@@ -338,6 +368,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "Euler was so prolific that there's a joke in mathematics: 'To avoid naming everything after Euler, discoveries are often attributed to the first person after Euler to rediscover them.'",
     connections: ["product", "integral", "limit"],
+    inventorImage: "/inventors/leonhard-euler.jpg",
   },
   {
     id: "product",
@@ -347,6 +378,7 @@ export const symbols: MathSymbol[] = [
     year: 1812,
     inventor: "Carl Friedrich Gauss",
     nationality: "German",
+    inventorWiki: "https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss",
     work: "Disquisitiones generales circa seriem infinitam",
     description:
       "Gauss introduced the capital pi \u220f for products, mirroring Euler's sigma \u03a3 for sums. The choice of pi is natural: \u03a0 is the Greek equivalent of 'P' for 'product'.",
@@ -356,6 +388,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "Gauss could multiply large numbers in his head as a child. By age 3, he reportedly corrected an arithmetic error in his father's payroll calculations.",
     connections: ["summation", "times", "factorial"],
+    inventorImage: "/inventors/carl-friedrich-gauss.jpg",
   },
   {
     id: "limit",
@@ -365,6 +398,7 @@ export const symbols: MathSymbol[] = [
     year: 1786,
     inventor: "Simon Antoine Jean L'Huilier",
     nationality: "Swiss",
+    inventorWiki: "https://en.wikipedia.org/wiki/Simon_Antoine_Jean_L%27Huilier",
     work: "Exposition \u00e9l\u00e9mentaire des principes des calculs sup\u00e9rieurs",
     description:
       "L'Huilier introduced the 'lim' abbreviation for limits, though the concept had been used informally for over a century. The rigorous epsilon-delta definition came later from Weierstrass in the 1860s.",
@@ -384,6 +418,7 @@ export const symbols: MathSymbol[] = [
     year: 1655,
     inventor: "John Wallis",
     nationality: "English",
+    inventorWiki: "https://en.wikipedia.org/wiki/John_Wallis",
     work: "De Sectionibus Conicis (On Conic Sections)",
     description:
       "Wallis introduced the lemniscate \u221e for infinity without explaining his choice. It may derive from the Roman numeral for 1000 (CI\u2180, sometimes written as a sideways 8), or from the last Greek letter omega (\u03c9), or it may simply be an intuitive loop suggesting endlessness.",
@@ -394,6 +429,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "The shape \u221e is called a lemniscate (from Latin 'lemniscatus', meaning 'decorated with ribbons'). It's technically a specific algebraic curve, not just a vague figure-eight.",
     connections: ["limit", "integral", "pi-constant"],
+    inventorImage: "/inventors/john-wallis.jpg",
   },
   {
     id: "pi-constant",
@@ -403,6 +439,7 @@ export const symbols: MathSymbol[] = [
     year: 1706,
     inventor: "William Jones",
     nationality: "Welsh",
+    inventorWiki: "https://en.wikipedia.org/wiki/William_Jones_(mathematician)",
     work: "Synopsis Palmariorum Matheseos",
     description:
       "Jones was the first to use the Greek letter \u03c0 for the ratio of a circle's circumference to its diameter. Euler's adoption of it in 1737 cemented its universal use. Jones chose \u03c0 as the first letter of the Greek word '\u03c0\u03b5\u03c1\u03b9\u03c6\u03ad\u03c1\u03b5\u03b9\u03b1' (periphery).",
@@ -413,6 +450,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "Pi Day (March 14, or 3/14) coincides with Albert Einstein's birthday. In 2015, it was extra special: 3/14/15 at 9:26:53 matched pi to 10 digits.",
     connections: ["euler-e", "imaginary-i", "infinity"],
+    inventorImage: "/inventors/william-jones.jpg",
   },
   {
     id: "euler-e",
@@ -422,6 +460,7 @@ export const symbols: MathSymbol[] = [
     year: 1731,
     inventor: "Leonhard Euler",
     nationality: "Swiss",
+    inventorWiki: "https://en.wikipedia.org/wiki/Leonhard_Euler",
     work: "Letter to Goldbach / Mechanica (1736)",
     description:
       "Euler first used 'e' for the base of natural logarithms in a letter to Goldbach in 1731, then in his published work. While it's often said 'e' stands for 'Euler', he likely chose it simply as the next available vowel after 'a', which he was already using.",
@@ -432,6 +471,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "e appears in compound interest (discovered by Bernoulli), probability (derangements), number theory (prime distribution), and physics (radioactive decay) \u2014 it's arguably the most 'natural' number in mathematics.",
     connections: ["pi-constant", "imaginary-i", "integral"],
+    inventorImage: "/inventors/leonhard-euler.jpg",
   },
   {
     id: "imaginary-i",
@@ -441,6 +481,7 @@ export const symbols: MathSymbol[] = [
     year: 1777,
     inventor: "Leonhard Euler",
     nationality: "Swiss",
+    inventorWiki: "https://en.wikipedia.org/wiki/Leonhard_Euler",
     work: "M\u00e9moire (published posthumously in 1794)",
     description:
       "Euler introduced 'i' for \u221a(-1) in a 1777 memoir. The symbol elegantly tamed 'impossible' numbers that had troubled mathematicians for centuries, enabling complex analysis and eventually quantum mechanics.",
@@ -451,6 +492,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "Euler discovered the most beautiful equation in mathematics: e^{i\u03c0} + 1 = 0, connecting five fundamental constants (e, i, \u03c0, 1, 0) in one elegant identity.",
     connections: ["euler-e", "pi-constant", "radical"],
+    inventorImage: "/inventors/leonhard-euler.jpg",
   },
   {
     id: "zero",
@@ -460,6 +502,7 @@ export const symbols: MathSymbol[] = [
     year: 628,
     inventor: "Brahmagupta",
     nationality: "Indian",
+    inventorWiki: "https://en.wikipedia.org/wiki/Brahmagupta",
     work: "Br\u0101hmasphu\u1e6dasiddh\u0101nta",
     description:
       "While placeholder zeros existed in Babylon and Maya civilizations, Brahmagupta was the first to treat zero as a number in its own right, defining rules for arithmetic with zero (addition, subtraction, multiplication). His work was transmitted to the Islamic world and then to Europe.",
@@ -479,6 +522,7 @@ export const symbols: MathSymbol[] = [
     year: 1889,
     inventor: "Giuseppe Peano",
     nationality: "Italian",
+    inventorWiki: "https://en.wikipedia.org/wiki/Giuseppe_Peano",
     work: "Arithmetices principia, nova methodo exposita",
     description:
       "Peano introduced \u2208 as a stylized epsilon (\u03b5), the first letter of the Greek word '\u03b5\u03c3\u03c4\u03af' (esti), meaning 'is'. It denotes set membership: a \u2208 S means 'a is an element of S'.",
@@ -488,6 +532,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "Peano created an entire symbolic language for mathematics (his 'Formulario Mathematico'), but it was so dense that few mathematicians could read it fluently.",
     connections: ["empty-set", "for-all", "there-exists"],
+    inventorImage: "/inventors/giuseppe-peano.jpg",
   },
   {
     id: "empty-set",
@@ -506,6 +551,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "Bourbaki was not a real person but a pseudonym for a secret group of French mathematicians. They even published a fake biography and wedding announcement for 'Nicolas Bourbaki'.",
     connections: ["element-of", "for-all", "zero"],
+    inventorImage: "/inventors/andre-weil.jpg",
   },
   {
     id: "for-all",
@@ -515,6 +561,7 @@ export const symbols: MathSymbol[] = [
     year: 1935,
     inventor: "Gerhard Gentzen",
     nationality: "German",
+    inventorWiki: "https://en.wikipedia.org/wiki/Gerhard_Gentzen",
     work: "Untersuchungen \u00fcber das logische Schlie\u00dfen",
     description:
       "Gentzen introduced \u2200 (an inverted A) for 'for all' in his groundbreaking work on natural deduction and sequent calculus. The choice of an upside-down 'A' from 'All' is a simple mnemonic.",
@@ -524,6 +571,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "Gentzen also proved the consistency of arithmetic \u2014 but tragically died in 1945 in a prisoner-of-war camp at age 35, cutting short one of the most brilliant careers in mathematical logic.",
     connections: ["there-exists", "element-of"],
+    inventorImage: "/inventors/gerhard-gentzen.jpg",
   },
   {
     id: "there-exists",
@@ -533,6 +581,7 @@ export const symbols: MathSymbol[] = [
     year: 1897,
     inventor: "Giuseppe Peano",
     nationality: "Italian",
+    inventorWiki: "https://en.wikipedia.org/wiki/Giuseppe_Peano",
     work: "Formulaire de Math\u00e9matiques",
     description:
       "Peano introduced a backwards 'E' for 'there exists.' The mnemonic mirrors \u2200: just as \u2200 is an inverted 'A' for 'All', \u2203 is a reversed 'E' for 'Exists'. Together they form the foundation of quantified predicate logic.",
@@ -542,6 +591,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "Adding a slash through \u2203 gives \u2204 ('there does not exist'), which is surprisingly rare in published mathematics \u2014 most authors prefer to write \u00ac\u2203 or 'no such ... exists'.",
     connections: ["for-all", "element-of"],
+    inventorImage: "/inventors/giuseppe-peano.jpg",
   },
   {
     id: "factorial",
@@ -551,6 +601,7 @@ export const symbols: MathSymbol[] = [
     year: 1808,
     inventor: "Christian Kramp",
     nationality: "French (Alsatian)",
+    inventorWiki: "https://en.wikipedia.org/wiki/Christian_Kramp",
     work: "\u00c9l\u00e9ments d'arithm\u00e9tique universelle",
     description:
       "Kramp introduced the exclamation mark for factorial, writing n! for the product 1\u00d72\u00d73\u00d7...\u00d7n. He explicitly stated he chose '!' for its typographic convenience, as it was easy to print and visually distinctive.",
@@ -570,6 +621,7 @@ export const symbols: MathSymbol[] = [
     year: 1734,
     inventor: "Leonhard Euler",
     nationality: "Swiss",
+    inventorWiki: "https://en.wikipedia.org/wiki/Leonhard_Euler",
     work: "Various publications, formalized in Introductio in analysin infinitorum (1748)",
     description:
       "Euler standardized writing f(x) to denote a function of x, though earlier mathematicians like Johann Bernoulli had used similar ideas. Euler's consistent use across his enormous body of work made it the universal standard.",
@@ -580,6 +632,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "Euler wrote more mathematical papers than any other individual in history \u2014 over 800 publications. New works of his continued to be published for nearly 50 years after his death.",
     connections: ["variable-x", "derivative", "euler-e"],
+    inventorImage: "/inventors/leonhard-euler.jpg",
   },
   {
     id: "similarity",
@@ -589,6 +642,7 @@ export const symbols: MathSymbol[] = [
     year: 1698,
     inventor: "Gottfried Wilhelm Leibniz",
     nationality: "German",
+    inventorWiki: "https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz",
     work: "Letter to Johann Bernoulli",
     description:
       "Leibniz proposed the tilde ~ for geometric similarity. It later became one of the most versatile symbols in mathematics, used for equivalence relations, approximation, probability distributions, and more.",
@@ -598,6 +652,7 @@ export const symbols: MathSymbol[] = [
     funFact:
       "The word 'tilde' comes from Spanish, where it refers to the ~ mark over the letter \u00f1. In Spanish, it originally indicated a following 'n' that was suppressed in writing.",
     connections: ["equals", "less-than", "greater-than"],
+    inventorImage: "/inventors/gottfried-wilhelm-leibniz.jpg",
   },
 ];
 

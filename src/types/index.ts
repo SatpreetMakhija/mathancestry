@@ -24,6 +24,8 @@ export interface MathSymbol {
   category: Category;
   funFact: string;
   connections: string[];
+  inventorImage?: string;
+  inventorWiki?: string;
 }
 
 export interface Equation {

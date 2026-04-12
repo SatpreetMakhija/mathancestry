@@ -234,8 +234,22 @@ export default function Timeline({ symbols: allSymbols }: TimelineProps) {
                                   {CATEGORY_LABELS[s.category]}
                                 </span>
                               </div>
-                              <div className="text-xs text-muted mt-0.5">
-                                {s.inventor}, {yearText}
+                              <div className="text-xs text-muted mt-0.5 flex items-center gap-1.5">
+                                {s.inventorImage ? (
+                                  <img
+                                    src={s.inventorImage}
+                                    alt={s.inventor}
+                                    className="w-5 h-5 rounded-full object-cover shrink-0 inline-block"
+                                    onError={(e) => {
+                                      (e.target as HTMLImageElement).style.display = "none";
+                                    }}
+                                  />
+                                ) : (
+                                  <span className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center text-accent text-[9px] font-bold shrink-0">
+                                    {s.inventor.charAt(0)}
+                                  </span>
+                                )}
+                                <span>{s.inventor}, {yearText}</span>
                               </div>
                               <p className="text-xs text-muted mt-2 m-0 leading-relaxed line-clamp-3">
                                 {s.description}
