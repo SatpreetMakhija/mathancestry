@@ -118,7 +118,6 @@ export default function Timeline({ symbols: allSymbols }: TimelineProps) {
   const nodes = layoutNodes(allSymbols);
 
   // Calculate total height needed based on max stacking
-  const maxTopOffset = Math.max(0, ...nodes.filter((n) => n.lane === 0).map((n) => n.laneOffset));
   const maxBottomOffset = Math.max(0, ...nodes.filter((n) => n.lane === 1).map((n) => n.laneOffset));
   const totalHeight = TIMELINE_Y + 60 + maxBottomOffset + 40;
 
@@ -160,8 +159,6 @@ export default function Timeline({ symbols: allSymbols }: TimelineProps) {
                 : BOTTOM_LANE_BASE + laneOffset;
 
             // Connector line from node to the timeline axis
-            const connectorTop =
-              lane === 0 ? nodeTop + NODE_SIZE : TIMELINE_Y + 2;
             const connectorHeight =
               lane === 0
                 ? TIMELINE_Y - nodeTop - NODE_SIZE
