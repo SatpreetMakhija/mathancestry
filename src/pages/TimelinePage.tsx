@@ -8,9 +8,12 @@ export default function TimelinePage() {
         <h1 className="text-3xl sm:text-4xl font-bold text-ink mb-2">
           Timeline of Notation
         </h1>
-        <p className="text-muted text-lg max-w-2xl mx-auto">
+        <p className="text-muted text-lg max-w-2xl mx-auto mb-3">
           From ancient India to 20th-century France — see when each symbol
           entered the mathematical lexicon.
+        </p>
+        <p className="text-sm text-accent font-medium">
+          Tap a symbol to expand its details.
         </p>
       </div>
 

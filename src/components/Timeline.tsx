@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import type { MathSymbol } from "../types";
 import { CATEGORY_COLORS, CATEGORY_LABELS } from "../types";
@@ -8,198 +8,180 @@ interface TimelineProps {
   symbols: MathSymbol[];
 }
 
-const NODE_SIZE = 36;
-const MIN_GAP = 6;
-const NODE_STEP = NODE_SIZE + MIN_GAP;
-const TIMELINE_Y = 180;
-const TOP_LANE_BASE = 80;
-const BOTTOM_LANE_BASE = TIMELINE_Y + 30;
-
-// Map year to pixel position — non-linear, with more space in the dense era
-function yearToPosition(year: number, isBCE?: boolean): number {
-  const y = isBCE ? -year : year;
-
-  if (y < 500) return ((y + 300) / 800) * 120;
-  if (y < 1400) return 120 + ((y - 500) / 900) * 120;
-  // 1400–1950 gets the bulk of space
-  return 240 + ((y - 1400) / 550) * 1800;
-}
-
-const TOTAL_WIDTH = 2100;
-
-interface EraMarker {
-  year: number;
+interface Era {
   label: string;
+  range: string;
+  filter: (s: MathSymbol) => boolean;
 }
 
-// Only show era markers where they won't collide
-const eras: EraMarker[] = [
-  { year: 0, label: "0 CE" },
-  { year: 1400, label: "1400" },
-  { year: 1500, label: "1500" },
-  { year: 1600, label: "1600" },
-  { year: 1650, label: "1650" },
-  { year: 1700, label: "1700" },
-  { year: 1750, label: "1750" },
-  { year: 1800, label: "1800" },
-  { year: 1850, label: "1850" },
-  { year: 1900, label: "1900" },
-  { year: 1950, label: "1950" },
+const ERAS: Era[] = [
+  {
+    label: "Ancient & Medieval",
+    range: "before 1500",
+    filter: (s) => {
+      const y = s.yearBCE ? -s.year : s.year;
+      return y < 1500;
+    },
+  },
+  {
+    label: "Renaissance",
+    range: "1500–1599",
+    filter: (s) => {
+      const y = s.yearBCE ? -s.year : s.year;
+      return y >= 1500 && y < 1600;
+    },
+  },
+  {
+    label: "Scientific Revolution",
+    range: "1600–1699",
+    filter: (s) => {
+      const y = s.yearBCE ? -s.year : s.year;
+      return y >= 1600 && y < 1700;
+    },
+  },
+  {
+    label: "Enlightenment",
+    range: "1700–1799",
+    filter: (s) => {
+      const y = s.yearBCE ? -s.year : s.year;
+      return y >= 1700 && y < 1800;
+    },
+  },
+  {
+    label: "Modern Era",
+    range: "1800–present",
+    filter: (s) => {
+      const y = s.yearBCE ? -s.year : s.year;
+      return y >= 1800;
+    },
+  },
 ];
 
-interface PositionedNode {
-  symbol: MathSymbol;
-  x: number;
-  lane: 0 | 1; // 0 = above, 1 = below
-  laneOffset: number; // extra offset within the lane for stacking
+const NODE_SIZE = 36;
+
+// Non-linear: log-compressed for huge gaps, generous for small ones
+function yearGapToPixels(gap: number): number {
+  if (gap <= 0) return 12;
+  return Math.min(96, Math.max(24, Math.log(gap + 1) * 16));
 }
 
-// Assign lanes and handle overlaps
-function layoutNodes(symbols: MathSymbol[]): PositionedNode[] {
-  const sorted = [...symbols].sort((a, b) => {
+type TimelineItem =
+  | { kind: "era"; label: string; range: string }
+  | {
+      kind: "node";
+      symbol: MathSymbol;
+      gapPx: number;
+      animIndex: number;
+      showYear: boolean;
+    };
+
+export default function Timeline({ symbols: allSymbols }: TimelineProps) {
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+
+  const sorted = [...allSymbols].sort((a, b) => {
     const ya = a.yearBCE ? -a.year : a.year;
     const yb = b.yearBCE ? -b.year : b.year;
     return ya - yb;
   });
 
-  const result: PositionedNode[] = [];
-
-  // Track occupied x-ranges per lane, per stack level
-  // For each lane, store the rightmost x used at each stack depth
-  const laneRightEdge: [number[], number[]] = [[], []]; // [top lanes depths, bottom lanes depths]
+  // Build render list: era headers interleaved with symbol nodes
+  const items: TimelineItem[] = [];
+  let currentEra = "";
+  let prevYear: number | null = null;
+  let animIdx = 0;
 
   for (let i = 0; i < sorted.length; i++) {
     const s = sorted[i];
-    const x = yearToPosition(s.year, s.yearBCE);
+    const y = s.yearBCE ? -s.year : s.year;
 
-    // Try the preferred lane (alternate) first, then the other
-    const preferredLane: 0 | 1 = i % 2 === 0 ? 0 : 1;
-    const otherLane: 0 | 1 = preferredLane === 0 ? 1 : 0;
-
-    let bestLane: 0 | 1 = preferredLane;
-    let bestDepth = findDepth(laneRightEdge[preferredLane], x);
-    const otherDepth = findDepth(laneRightEdge[otherLane], x);
-
-    // Prefer the lane with less stacking
-    if (otherDepth < bestDepth) {
-      bestLane = otherLane;
-      bestDepth = otherDepth;
+    const era = ERAS.find((e) => e.filter(s));
+    if (era && era.label !== currentEra) {
+      currentEra = era.label;
+      items.push({ kind: "era", label: era.label, range: era.range });
     }
 
-    // Record this node's right edge at its depth
-    while (laneRightEdge[bestLane].length <= bestDepth) {
-      laneRightEdge[bestLane].push(-Infinity);
+    let gapPx = 0;
+    if (prevYear !== null) {
+      gapPx = yearGapToPixels(y - prevYear);
     }
-    laneRightEdge[bestLane][bestDepth] = x + NODE_STEP;
 
-    result.push({
+    // Only show year label for the first symbol at each unique year
+    const showYear = prevYear === null || y !== prevYear;
+    prevYear = y;
+
+    items.push({
+      kind: "node",
       symbol: s,
-      x,
-      lane: bestLane,
-      laneOffset: bestDepth * (NODE_SIZE + 4),
+      gapPx,
+      animIndex: animIdx++,
+      showYear,
     });
   }
 
-  return result;
-}
-
-// Find the first depth where x doesn't overlap
-function findDepth(rightEdges: number[], x: number): number {
-  for (let d = 0; d < rightEdges.length; d++) {
-    if (x >= rightEdges[d]) return d;
-  }
-  return rightEdges.length;
-}
-
-export default function Timeline({ symbols: allSymbols }: TimelineProps) {
-  const [activeSymbol, setActiveSymbol] = useState<MathSymbol | null>(null);
-  const navigate = useNavigate();
-
-  const nodes = layoutNodes(allSymbols);
-
-  // Calculate total height needed based on max stacking
-  const maxBottomOffset = Math.max(0, ...nodes.filter((n) => n.lane === 1).map((n) => n.laneOffset));
-  const totalHeight = TIMELINE_Y + 60 + maxBottomOffset + 40;
-
   return (
-    <div className="relative">
-      <div className="timeline-scroll overflow-x-auto pb-4">
+    <div className="max-w-2xl mx-auto">
+      <div className="relative">
+        {/* ── Continuous vertical line down the center ── */}
         <div
-          className="relative"
-          style={{ width: TOTAL_WIDTH, height: Math.max(totalHeight, 340) }}
-        >
-          {/* Era markers */}
-          {eras.map((era) => {
-            const x = yearToPosition(era.year);
+          className="absolute left-1/2 -translate-x-[1.5px] top-0 bottom-0 w-[3px] rounded-full"
+          style={{
+            background:
+              "linear-gradient(to bottom, var(--color-accent) 0%, var(--color-accent-light) 50%, var(--color-accent) 100%)",
+            opacity: 0.3,
+          }}
+        />
+
+        {items.map((item) => {
+          // ── Era header: centered pill over the line ──
+          if (item.kind === "era") {
             return (
               <div
-                key={era.year}
-                className="absolute"
-                style={{ left: x, top: 0, bottom: 30 }}
+                key={item.label}
+                className="relative flex justify-center py-5 first:pt-0"
               >
-                <div className="h-full border-l border-dashed border-border" />
-                <div className="absolute bottom-[-24px] -translate-x-1/2 text-xs text-muted whitespace-nowrap">
-                  {era.label}
+                <div className="bg-parchment border border-border px-5 py-1.5 rounded-full z-10 text-center">
+                  <div className="text-sm font-bold text-ink leading-tight">
+                    {item.label}
+                  </div>
+                  <div className="text-[10px] text-muted leading-tight">
+                    {item.range}
+                  </div>
                 </div>
               </div>
             );
-          })}
+          }
 
-          {/* Main timeline line */}
-          <div
-            className="absolute left-0 right-0 h-0.5 bg-accent/30"
-            style={{ top: TIMELINE_Y }}
-          />
+          // ── Symbol node row ──
+          const s = item.symbol;
+          const yearText = s.yearBCE ? `${s.year} BCE` : String(s.year);
+          const isExpanded = expandedId === s.id;
 
-          {/* Symbol nodes */}
-          {nodes.map(({ symbol: s, x, lane, laneOffset }, i) => {
-            const nodeTop =
-              lane === 0
-                ? TOP_LANE_BASE - laneOffset
-                : BOTTOM_LANE_BASE + laneOffset;
-
-            // Connector line from node to the timeline axis
-            const connectorHeight =
-              lane === 0
-                ? TIMELINE_Y - nodeTop - NODE_SIZE
-                : nodeTop - TIMELINE_Y - 2;
-
-            return (
-              <motion.div
-                key={s.id}
-                className="absolute cursor-pointer"
-                style={{
-                  left: x - NODE_SIZE / 2,
-                  top: nodeTop,
-                  width: NODE_SIZE,
-                }}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.015 * i }}
-                onClick={() => {
-                  if (activeSymbol?.id === s.id) {
-                    navigate(`/symbol/${s.id}`);
-                  } else {
-                    setActiveSymbol(s);
-                  }
-                }}
-                onMouseEnter={() => setActiveSymbol(s)}
+          return (
+            <motion.div
+              key={s.id}
+              className="relative"
+              style={{ paddingTop: item.gapPx }}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.025 * item.animIndex }}
+            >
+              {/* ── Main row: [year] ● [name] ── */}
+              <div
+                className="flex items-center cursor-pointer group"
+                onClick={() => setExpandedId(isExpanded ? null : s.id)}
               >
-                {/* Connector line */}
-                {connectorHeight > 0 && (
-                  <div
-                    className="absolute left-1/2 -translate-x-1/2 w-px bg-accent/15"
-                    style={{
-                      top: lane === 0 ? NODE_SIZE : undefined,
-                      bottom: lane === 1 ? NODE_SIZE : undefined,
-                      height: connectorHeight,
-                    }}
-                  />
-                )}
+                {/* Year — left column */}
+                <div className="flex-1 text-right pr-3 min-w-0">
+                  {item.showYear && (
+                    <span className="text-xs font-mono font-semibold text-accent/70 tabular-nums">
+                      {yearText}
+                    </span>
+                  )}
+                </div>
 
-                {/* Node circle */}
+                {/* Node circle — centered on the line */}
                 <div
-                  className="rounded-full flex items-center justify-center text-white font-bold shadow-sm hover:scale-110 transition-transform relative z-10"
+                  className="relative z-10 shrink-0 rounded-full flex items-center justify-center text-white font-bold shadow-md group-hover:scale-110 transition-transform ring-2 ring-white"
                   style={{
                     width: NODE_SIZE,
                     height: NODE_SIZE,
@@ -211,86 +193,76 @@ export default function Timeline({ symbols: allSymbols }: TimelineProps) {
                   {s.symbol}
                 </div>
 
-                {/* Year label — only show for non-stacked nodes to avoid collision */}
-                {laneOffset === 0 && (
-                  <div
-                    className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap text-center"
-                    style={
-                      lane === 0
-                        ? { bottom: -16 }
-                        : { top: NODE_SIZE + 2 }
-                    }
+                {/* Name — right column */}
+                <div className="flex-1 pl-3 min-w-0">
+                  <span className="text-sm font-semibold text-ink group-hover:text-accent transition-colors">
+                    {s.name}
+                  </span>
+                </div>
+              </div>
+
+              {/* ── Expandable info card (right side) ── */}
+              <AnimatePresence>
+                {isExpanded && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    <div className="text-[10px] font-semibold text-ink">
-                      {s.yearBCE ? `${s.year} BCE` : s.year}
+                    <div className="flex">
+                      <div className="flex-1" />
+                      <div style={{ width: NODE_SIZE }} className="shrink-0" />
+                      <div className="flex-1 pl-3 pt-2 pb-1">
+                        <div className="bg-white border border-border rounded-lg shadow-sm p-4">
+                          <div className="flex items-start gap-3">
+                            <span className="text-3xl font-serif shrink-0">
+                              {s.symbol}
+                            </span>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2 flex-wrap">
+                                <span className="font-semibold text-sm text-ink">
+                                  {s.name}
+                                </span>
+                                <span
+                                  className="inline-block px-1.5 py-0.5 rounded text-[10px] font-medium text-white"
+                                  style={{
+                                    backgroundColor:
+                                      CATEGORY_COLORS[s.category],
+                                  }}
+                                >
+                                  {CATEGORY_LABELS[s.category]}
+                                </span>
+                              </div>
+                              <div className="text-xs text-muted mt-0.5">
+                                {s.inventor}, {yearText}
+                              </div>
+                              <p className="text-xs text-muted mt-2 m-0 leading-relaxed line-clamp-3">
+                                {s.description}
+                              </p>
+                              <Link
+                                to={`/symbol/${s.id}`}
+                                className="inline-block mt-2 text-xs font-medium text-accent hover:underline"
+                              >
+                                View full history &rarr;
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  </motion.div>
                 )}
-              </motion.div>
-            );
-          })}
+              </AnimatePresence>
+            </motion.div>
+          );
+        })}
 
-          {/* Tooltip — positioned in the opposite region from the hovered node */}
-          <AnimatePresence>
-            {activeSymbol && (() => {
-              const node = nodes.find((n) => n.symbol.id === activeSymbol.id);
-              if (!node) return null;
-
-              const tooltipX = Math.max(
-                8,
-                Math.min(node.x - 120, TOTAL_WIDTH - 260),
-              );
-              // Place tooltip in the lane opposite the node to avoid occlusion
-              const tooltipTop = node.lane === 0 ? BOTTOM_LANE_BASE + maxBottomOffset + 50 : 0;
-
-              return (
-                <motion.div
-                  key={activeSymbol.id}
-                  className="absolute z-20 bg-white border border-border rounded-lg shadow-lg p-3 w-60 pointer-events-none"
-                  style={{ left: tooltipX, top: tooltipTop }}
-                  initial={{ opacity: 0, y: 4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 4 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  <div className="flex items-start gap-2">
-                    <span className="text-2xl font-serif">
-                      {activeSymbol.symbol}
-                    </span>
-                    <div>
-                      <div className="font-semibold text-sm text-ink">
-                        {activeSymbol.name}
-                      </div>
-                      <div className="text-xs text-muted">
-                        {activeSymbol.inventor},{" "}
-                        {activeSymbol.yearBCE
-                          ? `${activeSymbol.year} BCE`
-                          : activeSymbol.year}
-                      </div>
-                      <span
-                        className="inline-block mt-1 px-1.5 py-0.5 rounded text-[10px] font-medium text-white"
-                        style={{
-                          backgroundColor:
-                            CATEGORY_COLORS[activeSymbol.category],
-                        }}
-                      >
-                        {CATEGORY_LABELS[activeSymbol.category]}
-                      </span>
-                    </div>
-                  </div>
-                  <p className="text-xs text-muted mt-2 m-0 leading-relaxed line-clamp-2">
-                    {activeSymbol.description}
-                  </p>
-                </motion.div>
-              );
-            })()}
-          </AnimatePresence>
+        {/* End cap */}
+        <div className="flex justify-center pt-6">
+          <div className="w-3 h-3 rounded-full bg-accent/30 z-10" />
         </div>
       </div>
-      <p className="text-xs text-muted text-center mt-2">
-        Click a symbol to see details. Scroll horizontally to explore the
-        timeline.
-      </p>
     </div>
   );
 }

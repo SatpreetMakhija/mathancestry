@@ -47,22 +47,13 @@ test.describe("Visual Audit", () => {
     await page.screenshot({ path: "screenshots/07-timeline-default.png", fullPage: true });
   });
 
-  test("timeline page - hover a node", async ({ page }) => {
+  test("timeline page - click a node to expand", async ({ page }) => {
     await page.goto("/timeline");
     await page.waitForTimeout(500);
     const node = page.locator('[title="Equals Sign"]');
-    await node.hover();
+    await node.click();
     await page.waitForTimeout(300);
-    await page.screenshot({ path: "screenshots/08-timeline-hover.png", fullPage: true });
-  });
-
-  test("timeline page - scrolled right", async ({ page }) => {
-    await page.goto("/timeline");
-    await page.waitForTimeout(500);
-    const scroll = page.locator(".timeline-scroll");
-    await scroll.evaluate(el => el.scrollLeft = 800);
-    await page.waitForTimeout(300);
-    await page.screenshot({ path: "screenshots/09-timeline-scrolled.png", fullPage: true });
+    await page.screenshot({ path: "screenshots/08-timeline-expanded.png", fullPage: true });
   });
 
   test("equation explorer - euler identity default", async ({ page }) => {

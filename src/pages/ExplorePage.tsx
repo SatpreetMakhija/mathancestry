@@ -8,9 +8,15 @@ export default function ExplorePage() {
         <h1 className="text-3xl sm:text-4xl font-bold text-ink mb-2">
           Equation Explorer
         </h1>
-        <p className="text-muted text-lg max-w-2xl mx-auto">
-          Hover over any symbol in a famous equation to discover its historical
-          origin.
+        <p className="text-muted text-lg max-w-2xl mx-auto mb-3">
+          <span className="hidden sm:inline">Hover over</span>
+          <span className="sm:hidden">Tap</span> any symbol in a famous
+          equation to discover its historical origin.
+        </p>
+        <p className="text-sm text-accent font-medium">
+          <span className="hidden sm:inline">Hover</span>
+          <span className="sm:hidden">Tap</span> a symbol, then click
+          &ldquo;View full history&rdquo; to learn more.
         </p>
       </div>
 
