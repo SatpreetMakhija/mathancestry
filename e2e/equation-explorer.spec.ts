@@ -70,7 +70,7 @@ test.describe("Equation Explorer Page", () => {
   }) => {
     // Before hovering: dashed placeholder is visible
     await expect(
-      page.getByText("Hover over a symbol in the equation above"),
+      page.getByText(/a symbol in the equation above/),
     ).toBeVisible();
 
     // Hover over a math symbol
@@ -81,7 +81,7 @@ test.describe("Equation Explorer Page", () => {
     // Info panel should appear below with symbol details
     // The placeholder text should be gone
     await expect(
-      page.getByText("Hover over a symbol in the equation above"),
+      page.getByText(/a symbol in the equation above/),
     ).not.toBeVisible();
 
     // Should show historical info (inventor + year)

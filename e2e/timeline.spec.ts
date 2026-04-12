@@ -10,47 +10,36 @@ test.describe("Timeline Page", () => {
   });
 
   test("renders timeline with symbol nodes", async ({ page }) => {
-    // Each symbol becomes a circular node with the symbol text inside
-    // The nodes are divs with rounded-full class containing symbol text
     const nodes = page.locator(".rounded-full").filter({ hasNotText: /All|Arithmetic|Algebra|Calculus|Constants|Logic|Set Theory|Geometry|Number Theory/ });
     const count = await nodes.count();
-    expect(count).toBeGreaterThanOrEqual(20); // At least most of 32 symbols
+    expect(count).toBeGreaterThanOrEqual(20);
   });
 
-  test("era markers are visible", async ({ page }) => {
-    // Check for some era labels
-    await expect(page.getByText("1500")).toBeVisible();
-    await expect(page.getByText("1700")).toBeVisible();
-    await expect(page.getByText("1900")).toBeVisible();
+  test("era section headers are visible", async ({ page }) => {
+    await expect(page.getByText("Ancient & Medieval")).toBeVisible();
+    await expect(page.getByText("Scientific Revolution")).toBeVisible();
+    await expect(page.getByText("Modern Era")).toBeVisible();
   });
 
-  test("hovering a node shows tooltip with symbol info", async ({ page }) => {
-    // Find a symbol node and hover it
-    // The nodes contain the symbol character
+  test("clicking a node expands an info card", async ({ page }) => {
     const equalsNode = page.locator('[title="Equals Sign"]');
-    await equalsNode.hover();
+    await equalsNode.click();
 
-    // Tooltip should appear with symbol name
     await expect(page.getByText("Robert Recorde")).toBeVisible();
+    await expect(page.getByText("View full history")).toBeVisible();
   });
 
-  test("clicking a node navigates to detail page", async ({ page }) => {
+  test("clicking an expanded node closes the card", async ({ page }) => {
     const equalsNode = page.locator('[title="Equals Sign"]');
-    // First click selects, second navigates
     await equalsNode.click();
+    await expect(page.getByText("View full history")).toBeVisible();
     await equalsNode.click();
-    await expect(page).toHaveURL(/\/symbol\/equals/);
+    await expect(page.getByText("View full history")).not.toBeVisible();
   });
 
-  test("timeline is horizontally scrollable", async ({ page }) => {
-    const scrollContainer = page.locator(".timeline-scroll");
-    const scrollWidth = await scrollContainer.evaluate(
-      (el) => el.scrollWidth,
-    );
-    const clientWidth = await scrollContainer.evaluate(
-      (el) => el.clientWidth,
-    );
-    // Timeline content should be wider than viewport
-    expect(scrollWidth).toBeGreaterThan(clientWidth);
+  test("timeline scrolls vertically", async ({ page }) => {
+    const pageHeight = await page.evaluate(() => document.body.scrollHeight);
+    const viewportHeight = await page.evaluate(() => window.innerHeight);
+    expect(pageHeight).toBeGreaterThan(viewportHeight);
   });
 });

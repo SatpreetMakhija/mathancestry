@@ -23,6 +23,13 @@ export default function EquationExplorer({
     }
   }, []);
 
+  const handleClick = useCallback((e: React.MouseEvent) => {
+    const symbol = getSymbolFromEvent(e);
+    if (symbol) {
+      setHoveredSymbol(symbol);
+    }
+  }, []);
+
   const html = renderLatex(selectedEq.latex, true);
 
   return (
@@ -53,6 +60,7 @@ export default function EquationExplorer({
         <div
           className="bg-white border border-border rounded-xl p-8 sm:p-12 text-center"
           onMouseMove={handleMouseMove}
+          onClick={handleClick}
         >
           <div
             className="text-2xl sm:text-3xl"
@@ -64,7 +72,9 @@ export default function EquationExplorer({
           </p>
 
           <p className="text-xs text-muted mt-2 mb-0">
-            Hover over any symbol to see its history. Click to learn more.
+            <span className="hidden sm:inline">Hover over</span>
+            <span className="sm:hidden">Tap</span> any symbol to see its
+            history. Click to learn more.
           </p>
         </div>
 
@@ -126,7 +136,8 @@ export default function EquationExplorer({
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15 }}
             >
-              Hover over a symbol in the equation above to explore its origins
+              <span className="hidden sm:inline">Hover over</span>
+              <span className="sm:hidden">Tap</span> a symbol in the equation above to explore its origins
             </motion.div>
           )}
         </AnimatePresence>

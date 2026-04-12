@@ -58,21 +58,3 @@ a {
   background-color: rgba(30, 58, 95, 0.15);
 }
 
-/* Timeline scrollbar */
-.timeline-scroll::-webkit-scrollbar {
-  height: 8px;
-}
-
-.timeline-scroll::-webkit-scrollbar-track {
-  background: var(--color-parchment);
-  border-radius: 4px;
-}
-
-.timeline-scroll::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 4px;
-}
-
-.timeline-scroll::-webkit-scrollbar-thumb:hover {
-  background: var(--color-muted);
-}

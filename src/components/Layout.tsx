@@ -16,7 +16,7 @@ export default function Layout() {
             <span className="text-2xl" role="img" aria-label="math">
               &Sigma;
             </span>
-            <span className="text-xl font-bold text-ink font-serif">
+            <span className="text-base sm:text-xl font-bold text-ink font-serif">
               MathAncestry
             </span>
           </NavLink>
@@ -28,7 +28,7 @@ export default function Layout() {
                 to={to}
                 end={to === "/"}
                 className={({ isActive }) =>
-                  `px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                  `px-2 sm:px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-colors ${
                     isActive
                       ? "bg-accent text-white"
                       : "text-muted hover:text-ink hover:bg-parchment"

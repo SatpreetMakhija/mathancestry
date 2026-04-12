@@ -26,7 +26,7 @@ export default function SymbolDetail({ symbol }: SymbolDetailProps) {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.4 }}
       >
-        <div className="text-7xl sm:text-8xl font-serif text-ink mb-4">
+        <div className="text-5xl min-[400px]:text-7xl sm:text-8xl font-serif text-ink mb-4">
           {symbol.symbol}
         </div>
         <h1 className="text-3xl sm:text-4xl font-bold text-ink m-0 mb-2">
