@@ -2,13 +2,13 @@
 
 ![Beta](https://img.shields.io/badge/status-beta-blue)
 
-**Git blame for math notation.** Explore the historical origins of 32 mathematical symbols — who invented them, when, and what came before.
+**Git blame for math notation.** Explore the historical origins of mathematical symbols — who invented them, when, and what came before.
 
 **Live site:** [mathancestry.satpreetmakhija.com](https://mathancestry.satpreetmakhija.com)
 
 ## Features
 
-- **Symbol Catalog** — Browse and filter all 32 symbols by category, sort by year or name
+- **Symbol Catalog** — Browse and filter all symbols by category, sort by year or name
 - **Interactive Timeline** — Vertical chronological view grouped by era with click-to-expand detail cards
 - **Equation Explorer** — Hover (or tap on mobile) symbols in famous equations to uncover their origins
 - **Symbol Detail Pages** — Full historical narratives, creator info, fun facts, and related symbols
