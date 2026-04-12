@@ -13,6 +13,10 @@ const SYMBOLS_TO_TEST = [
   { id: "congruence", name: "Congruence Symbol", inventor: "Gottfried Wilhelm Leibniz", year: "1679" },
   { id: "triangle", name: "Triangle Symbol", inventor: "Heron of Alexandria", year: "150" },
   { id: "degree", name: "Degree Symbol", inventor: "Jacques Peletier du Mans", year: "1558" },
+  { id: "logical-and", name: "Logical AND (Conjunction)", inventor: "Arend Heyting", year: "1930" },
+  { id: "logical-or", name: "Logical OR (Disjunction)", inventor: "Bertrand Russell", year: "1906" },
+  { id: "logical-not", name: "Logical NOT (Negation)", inventor: "Arend Heyting", year: "1930" },
+  { id: "implication", name: "Logical Implication", inventor: "David Hilbert", year: "1922" },
 ];
 
 test.describe("Symbol Detail Page", () => {

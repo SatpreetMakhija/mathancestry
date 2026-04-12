@@ -570,7 +570,7 @@ export const symbols: MathSymbol[] = [
     category: "logic",
     funFact:
       "Gentzen also proved the consistency of arithmetic \u2014 but tragically died in 1945 in a prisoner-of-war camp at age 35, cutting short one of the most brilliant careers in mathematical logic.",
-    connections: ["there-exists", "element-of"],
+    connections: ["there-exists", "element-of", "logical-and", "logical-not"],
     inventorImage: "/inventors/gerhard-gentzen.jpg",
   },
   {
@@ -590,8 +590,88 @@ export const symbols: MathSymbol[] = [
     category: "logic",
     funFact:
       "Adding a slash through \u2203 gives \u2204 ('there does not exist'), which is surprisingly rare in published mathematics \u2014 most authors prefer to write \u00ac\u2203 or 'no such ... exists'.",
-    connections: ["for-all", "element-of"],
+    connections: ["for-all", "element-of", "logical-or"],
     inventorImage: "/inventors/giuseppe-peano.jpg",
+  },
+  {
+    id: "logical-and",
+    symbol: "∧",
+    latex: "\\land",
+    name: "Logical AND (Conjunction)",
+    year: 1930,
+    inventor: "Arend Heyting",
+    nationality: "Dutch",
+    inventorWiki: "https://en.wikipedia.org/wiki/Arend_Heyting",
+    work: "Die formalen Regeln der intuitionistischen Logik",
+    description:
+      "Heyting introduced the ∧ symbol for logical conjunction in his 1930 paper formalizing intuitionistic logic, published in the Sitzungsberichte der preussischen Akademie der Wissenschaften. The symbol appears on page 43 of the paper, alongside ¬ for negation.",
+    beforeThis:
+      "Boole used multiplication (pq) for 'p and q.' Peano used the intersection symbol ∩ for conjunction. Russell and Whitehead used the dot (·) in Principia Mathematica (1910).",
+    category: "logic",
+    funFact:
+      "Heyting introduced both ∧ and ¬ on the same page of the same paper. His formalization of intuitionistic logic was originally submitted as a prize essay in 1928 — and won. His advisor Brouwer had deliberately refused to formalize his own intuitionistic ideas, so Heyting did what his teacher wouldn't.",
+    connections: ["logical-or", "logical-not", "for-all"],
+    inventorImage: "/inventors/arend-heyting.jpg",
+  },
+  {
+    id: "logical-or",
+    symbol: "∨",
+    latex: "\\lor",
+    name: "Logical OR (Disjunction)",
+    year: 1906,
+    inventor: "Bertrand Russell",
+    nationality: "British",
+    inventorWiki: "https://en.wikipedia.org/wiki/Bertrand_Russell",
+    work: "The Theory of Implication (American Journal of Mathematics, vol. 28)",
+    description:
+      "Russell introduced ∨ for logical disjunction in his 1906 paper 'The Theory of Implication.' He created ∨ to distinguish propositional disjunction from Peano's ∪ (class union), which Peano had used for both purposes.",
+    beforeThis:
+      "Peano used the union symbol ∪ for both class union and propositional disjunction. Boole used addition (+) for 'or.' There was no dedicated symbol for propositional disjunction alone.",
+    category: "logic",
+    funFact:
+      "A common myth claims ∨ stands for the Latin word 'vel' (meaning 'or'). A 2023 paper by Elkind and Zach debunked this — Russell actually despised Latin, writing: 'I hated Latin and Greek, and thought it merely foolish to learn a language that nobody speaks.' He chose ∨ as a visual sharpening of Peano's ∪.",
+    connections: ["logical-and", "there-exists", "implication"],
+    inventorImage: "/inventors/bertrand-russell.jpg",
+  },
+  {
+    id: "logical-not",
+    symbol: "¬",
+    latex: "\\lnot",
+    name: "Logical NOT (Negation)",
+    year: 1930,
+    inventor: "Arend Heyting",
+    nationality: "Dutch",
+    inventorWiki: "https://en.wikipedia.org/wiki/Arend_Heyting",
+    work: "Die formalen Regeln der intuitionistischen Logik",
+    description:
+      "Heyting introduced the ¬ symbol for logical negation in the same 1930 paper where he introduced ∧ for conjunction. Both symbols appear on page 43 of his formalization of intuitionistic logic.",
+    beforeThis:
+      "Frege used a small vertical stroke attached to his content stroke for negation in Begriffsschrift (1879). Peano introduced the tilde ~ for negation in 1897. Russell and Whitehead adopted ~ in Principia Mathematica (1910).",
+    category: "logic",
+    funFact:
+      "Heyting had eleven children and was described as 'retiring and modest' with interests spanning music, literature, linguistics, philosophy, astronomy, and botany — a Renaissance man who happened to revolutionize the notation of logic.",
+    connections: ["logical-and", "not-equal", "for-all"],
+    inventorImage: "/inventors/arend-heyting.jpg",
+  },
+  {
+    id: "implication",
+    symbol: "→",
+    latex: "\\to",
+    name: "Logical Implication",
+    year: 1922,
+    inventor: "David Hilbert",
+    nationality: "German",
+    inventorWiki: "https://en.wikipedia.org/wiki/David_Hilbert",
+    work: "Neubegründung der Mathematik (Abhandlungen aus dem Mathematischen Seminar der Hamburger Universität)",
+    description:
+      "Hilbert introduced the arrow → for logical implication in his 1922 paper, where the symbol appears on page 166. The arrow was a cleaner, more intuitive replacement for Peano's horseshoe symbol ⊃, visually suggesting directionality from hypothesis to conclusion.",
+    beforeThis:
+      "Peano used the horseshoe ⊃ for implication, which Russell and Whitehead adopted in Principia Mathematica (1910). Frege used a two-dimensional conditional stroke in his Begriffsschrift (1879).",
+    category: "logic",
+    funFact:
+      "Hilbert's tombstone bears the inscription 'Wir müssen wissen — wir werden wissen' ('We must know — we will know'). The paper containing the → symbol was based on talks that were a direct rebuttal to his former student Hermann Weyl, who had defected to Brouwer's intuitionism.",
+    connections: ["logical-or", "logical-and"],
+    inventorImage: "/inventors/david-hilbert.jpg",
   },
   {
     id: "factorial",
