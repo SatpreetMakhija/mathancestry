@@ -18,6 +18,7 @@ async function openPaletteViaKeyboard(page: import("@playwright/test").Page) {
 test.describe("Command Palette", () => {
   test("keyboard shortcut opens and Escape closes", async ({ page }) => {
     await page.goto("/");
+    await page.waitForLoadState("networkidle");
     await openPaletteViaKeyboard(page);
     await expect(page.getByTestId("command-palette")).toBeVisible();
     await page.keyboard.press("Escape");
@@ -78,6 +79,11 @@ test.describe("Command Palette", () => {
     await page.goto("/");
     await page.getByTestId("search-button").click();
     await page.getByTestId("command-palette-input").fill("Equals Sign");
+    await page
+      .getByTestId("command-palette-results")
+      .locator("button")
+      .first()
+      .waitFor();
     await page.keyboard.press("Enter");
     await expect(page).toHaveURL("/symbol/equals");
   });
