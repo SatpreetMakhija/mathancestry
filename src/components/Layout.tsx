@@ -1,5 +1,7 @@
+import { useState, useEffect, useCallback } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { motion } from "framer-motion";
+import CommandPalette from "./CommandPalette";
 
 const navItems = [
   { to: "/", label: "Catalog" },
@@ -8,6 +10,21 @@ const navItems = [
 ];
 
 export default function Layout() {
+  const [paletteOpen, setPaletteOpen] = useState(false);
+
+  const closePalette = useCallback(() => setPaletteOpen(false), []);
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setPaletteOpen((prev) => !prev);
+      }
+    };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col">
       <header className="border-b border-border bg-white/80 backdrop-blur-sm sticky top-0 z-50">
@@ -48,7 +65,7 @@ export default function Layout() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <Outlet />
+          <Outlet context={{ openPalette: () => setPaletteOpen(true) }} />
         </motion.div>
       </main>
 
@@ -57,6 +74,8 @@ export default function Layout() {
           MathAncestry &mdash; Git Blame for Math Notation
         </div>
       </footer>
+
+      <CommandPalette open={paletteOpen} onClose={closePalette} />
     </div>
   );
 }
