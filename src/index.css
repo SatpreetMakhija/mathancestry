@@ -1,0 +1,78 @@
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+
+@theme {
+  --color-cream: #fafaf5;
+  --color-parchment: #f5f0e8;
+  --color-ink: #1a1a2e;
+  --color-accent: #1e3a5f;
+  --color-accent-light: #2d5a8e;
+  --color-muted: #6b7280;
+  --color-border: #e5e2d9;
+
+  --color-cat-arithmetic: #e74c3c;
+  --color-cat-algebra: #3498db;
+  --color-cat-calculus: #2ecc71;
+  --color-cat-constants: #9b59b6;
+  --color-cat-logic: #e67e22;
+  --color-cat-set-theory: #1abc9c;
+  --color-cat-geometry: #f39c12;
+  --color-cat-number-theory: #8e44ad;
+
+  --font-serif: "Georgia", "Playfair Display", "Times New Roman", serif;
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* KaTeX interactivity */
+.math-symbol {
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background-color 0.15s ease;
+}
+
+.math-symbol:hover {
+  background-color: rgba(30, 58, 95, 0.15);
+}
+
+/* Timeline scrollbar */
+.timeline-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.timeline-scroll::-webkit-scrollbar-track {
+  background: var(--color-parchment);
+  border-radius: 4px;
+}
+
+.timeline-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+.timeline-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted);
+}
