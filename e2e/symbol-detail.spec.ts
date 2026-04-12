@@ -7,6 +7,12 @@ const SYMBOLS_TO_TEST = [
   { id: "zero", name: "Zero", inventor: "Brahmagupta", year: "628" },
   { id: "pi-constant", name: "Pi", inventor: "William Jones", year: "1706" },
   { id: "empty-set", name: "Empty Set", inventor: "André Weil", year: "1939" },
+  { id: "angle", name: "Angle Symbol", inventor: "William Oughtred", year: "1657" },
+  { id: "perpendicular", name: "Perpendicular Symbol", inventor: "Pierre Herigone", year: "1634" },
+  { id: "parallel", name: "Parallel Symbol", inventor: "John Kersey", year: "1673" },
+  { id: "congruence", name: "Congruence Symbol", inventor: "Gottfried Wilhelm Leibniz", year: "1679" },
+  { id: "triangle", name: "Triangle Symbol", inventor: "Heron of Alexandria", year: "150" },
+  { id: "degree", name: "Degree Symbol", inventor: "Jacques Peletier du Mans", year: "1558" },
 ];
 
 test.describe("Symbol Detail Page", () => {

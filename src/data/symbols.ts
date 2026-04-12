@@ -651,8 +651,124 @@ export const symbols: MathSymbol[] = [
     category: "geometry",
     funFact:
       "The word 'tilde' comes from Spanish, where it refers to the ~ mark over the letter \u00f1. In Spanish, it originally indicated a following 'n' that was suppressed in writing.",
-    connections: ["equals", "less-than", "greater-than"],
+    connections: ["equals", "congruence", "angle"],
     inventorImage: "/inventors/gottfried-wilhelm-leibniz.jpg",
+  },
+  {
+    id: "angle",
+    symbol: "∠",
+    latex: "\\angle",
+    name: "Angle Symbol",
+    year: 1657,
+    inventor: "William Oughtred",
+    nationality: "English",
+    inventorWiki: "https://en.wikipedia.org/wiki/William_Oughtred",
+    work: "Trigonometria (published posthumously by John Wallis)",
+    description:
+      "Oughtred introduced the ∠ symbol for angles in his Trigonometria, published posthumously in 1657 by John Wallis. Pierre Herigone had used the less-than sign < for angles in 1634, but Oughtred's modified form ∠ became the standard notation.",
+    beforeThis:
+      "Angles were described in words or abbreviated as 'ang.' Pierre Herigone used the < symbol for angles in 1634, but this caused confusion with inequality.",
+    category: "geometry",
+    funFact:
+      "Oughtred died in 1660, reportedly from joy upon hearing the news of the Restoration of Charles II. His Trigonometria was published three years before his death by his student John Wallis.",
+    connections: ["similarity", "perpendicular", "degree"],
+    inventorImage: "/inventors/william-oughtred.jpg",
+  },
+  {
+    id: "perpendicular",
+    symbol: "⊥",
+    latex: "\\perp",
+    name: "Perpendicular Symbol",
+    year: 1634,
+    inventor: "Pierre Herigone",
+    nationality: "French",
+    inventorWiki: "https://en.wikipedia.org/wiki/Pierre_H%C3%A9rigone",
+    work: "Cursus mathematicus",
+    description:
+      "Herigone introduced ⊥ to denote perpendicularity in his six-volume Cursus mathematicus (1634–1642). This was part of his broader effort to create a complete symbolic language for mathematics, replacing verbal descriptions with compact notation.",
+    beforeThis:
+      "Perpendicularity was stated in words: 'line AB is perpendicular to line CD.' There was no dedicated symbol for the relationship.",
+    category: "geometry",
+    funFact:
+      "Herigone's Cursus mathematicus was one of the first attempts to create an entirely symbolic mathematical language. He also introduced ∠ (as <) for angles, though Oughtred's version won out.",
+    connections: ["angle", "parallel"],
+  },
+  {
+    id: "parallel",
+    symbol: "∥",
+    latex: "\\parallel",
+    name: "Parallel Symbol",
+    year: 1673,
+    inventor: "John Kersey",
+    nationality: "English",
+    inventorWiki: "https://en.wikipedia.org/wiki/John_Kersey_the_elder",
+    work: "Algebra (edition of Wingate's Arithmétique)",
+    description:
+      "The parallel symbol ∥ first appeared in print in John Kersey's 1673 edition of Wingate's Arithmétique. William Oughtred also used the symbol in his work published posthumously in 1677, leading to some dispute over its origin. Kersey's published use predates Oughtred's by four years.",
+    beforeThis:
+      "Parallelism was described verbally: 'line AB is parallel to line CD.' Euclid's Elements discussed parallel lines extensively without any symbolic shorthand.",
+    category: "geometry",
+    funFact:
+      "The symbol's visual design is elegantly literal — two parallel vertical lines representing two parallel lines. It is one of the most pictographic symbols in mathematical notation.",
+    connections: ["perpendicular", "similarity"],
+  },
+  {
+    id: "congruence",
+    symbol: "≅",
+    latex: "\\cong",
+    name: "Congruence Symbol",
+    year: 1679,
+    inventor: "Gottfried Wilhelm Leibniz",
+    nationality: "German",
+    inventorWiki: "https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz",
+    work: "Unpublished manuscripts (concept described 1679, published 1710)",
+    description:
+      "Leibniz conceived the idea of combining the equality sign = with the similarity sign ~ to express geometric congruence (same shape and size). He described this in manuscripts around 1679, though the notation was not published until 1710. The modern symbol ≅ directly reflects his concept of 'similar and equal.'",
+    beforeThis:
+      "Congruence was expressed verbally or with the simple equality sign, which failed to distinguish between numerical equality and geometric congruence.",
+    category: "geometry",
+    funFact:
+      "Leibniz invented both the similarity (~) and congruence (≅) symbols, making him perhaps the most influential figure in the notation of geometric relationships.",
+    connections: ["similarity", "equals"],
+    inventorImage: "/inventors/gottfried-wilhelm-leibniz.jpg",
+  },
+  {
+    id: "triangle",
+    symbol: "△",
+    latex: "\\triangle",
+    name: "Triangle Symbol",
+    year: 150,
+    inventor: "Heron of Alexandria",
+    nationality: "Greek",
+    inventorWiki: "https://en.wikipedia.org/wiki/Hero_of_Alexandria",
+    work: "Metrica",
+    description:
+      "Heron of Alexandria used the triangle symbol △ as a shorthand for the word 'triangle' in his Metrica (c. AD 150), one of the earliest known uses of a geometric shape as its own mathematical symbol. The practice became widespread in European mathematics by the 17th century.",
+    beforeThis:
+      "The word 'triangle' or its Greek equivalent 'trigonon' (τρίγωνον) was written out in full. Euclid's Elements always spelled out triangle names like 'triangle ABC.'",
+    category: "geometry",
+    funFact:
+      "Heron is best known for Heron's formula for the area of a triangle given its side lengths, and for the aeolipile — an early steam engine. His Metrica was lost for centuries and only rediscovered in 1896 in Constantinople.",
+    connections: ["angle", "degree"],
+  },
+  {
+    id: "degree",
+    symbol: "°",
+    latex: "^{\\circ}",
+    name: "Degree Symbol",
+    year: 1558,
+    inventor: "Jacques Peletier du Mans",
+    nationality: "French",
+    inventorWiki: "https://en.wikipedia.org/wiki/Jacques_Pelletier_du_Mans",
+    work: "De l'usage de la géométrie",
+    description:
+      "The small raised circle ° for degrees appeared in Jacques Peletier du Mans' 1558 work on geometry. The symbol likely evolved from the practice of marking degrees with a small zero or 'o' as a superscript, derived from the Latin 'nulla' (nothing) used in the sexagesimal (base-60) system inherited from Babylonian astronomy.",
+    beforeThis:
+      "Degrees were abbreviated as 'deg.' or 'gr.' (from Latin 'gradus'). The Babylonians used a sexagesimal system but without a dedicated degree symbol.",
+    category: "geometry",
+    funFact:
+      "Peletier was also a poet and humanist of the French Renaissance. His mathematical works were notable for being written in French rather than Latin, helping to democratize mathematical knowledge.",
+    connections: ["angle", "triangle"],
   },
 ];
 

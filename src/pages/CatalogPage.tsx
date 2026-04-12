@@ -37,8 +37,8 @@ export default function CatalogPage() {
           The Symbol Catalog
         </h1>
         <p className="text-muted text-lg max-w-2xl mx-auto mb-5">
-          Explore the origins of {symbols.length} mathematical symbols — who
-          invented them, when, and what came before.
+          Explore the origins of mathematical symbols — who invented them,
+          when, and what came before.
         </p>
 
         {/* Search button */}
