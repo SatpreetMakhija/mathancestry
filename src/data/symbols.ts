@@ -850,6 +850,446 @@ export const symbols: MathSymbol[] = [
       "Peletier was also a poet and humanist of the French Renaissance. His mathematical works were notable for being written in French rather than Latin, helping to democratize mathematical knowledge.",
     connections: ["angle", "triangle"],
   },
+  // ── Set Theory ──────────────────────────────────────────
+  {
+    id: "union",
+    symbol: "∪",
+    latex: "\\cup",
+    name: "Union",
+    year: 1888,
+    inventor: "Giuseppe Peano",
+    nationality: "Italian",
+    inventorWiki: "https://en.wikipedia.org/wiki/Giuseppe_Peano",
+    work: "Calcolo geometrico secondo l'Ausdehnungslehre di H. Grassmann",
+    description:
+      "Peano adopted the ∪ symbol for set union in his 1888 treatise on geometric calculus, adapting it from Hermann Grassmann's Ausdehnungslehre of 1844 where ∪ and ∩ appeared as general algebraic operation symbols. Peano specialized them specifically for set-theoretic union and intersection.",
+    beforeThis:
+      "The plus sign '+' was used for the union of classes, borrowed from logical addition. Grassmann had used ∪ as a general operation symbol (not specifically for set union) in 1844.",
+    category: "set-theory",
+    funFact:
+      "Peano borrowed the ∪ and ∩ symbols from Grassmann's 1844 work on extension theory, but Grassmann had used them as abstract algebraic operations with no connection to sets — a field that barely existed at the time.",
+    connections: ["intersection", "element-of", "empty-set", "logical-or"],
+    inventorImage: "/inventors/giuseppe-peano.jpg",
+  },
+  {
+    id: "intersection",
+    symbol: "∩",
+    latex: "\\cap",
+    name: "Intersection",
+    year: 1888,
+    inventor: "Giuseppe Peano",
+    nationality: "Italian",
+    inventorWiki: "https://en.wikipedia.org/wiki/Giuseppe_Peano",
+    work: "Calcolo geometrico secondo l'Ausdehnungslehre di H. Grassmann",
+    description:
+      "In the same 1888 work where he introduced ∪ for union, Peano repurposed Grassmann's ∩ symbol specifically for set intersection. The symbol represents the collection of elements common to two sets.",
+    beforeThis:
+      "The multiplication sign '×' or simple juxtaposition was used for the intersection of classes, following the convention of logical multiplication.",
+    category: "set-theory",
+    funFact:
+      "Peano deliberately chose ∩ and ∪ to replace the arithmetic × and + symbols that logicians had borrowed for class operations, recognizing that overloading arithmetic symbols for logic caused confusion — a problem that persists in programming languages to this day.",
+    connections: ["union", "element-of", "empty-set", "logical-and"],
+    inventorImage: "/inventors/giuseppe-peano.jpg",
+  },
+  {
+    id: "subset",
+    symbol: "⊂",
+    latex: "\\subset",
+    name: "Subset",
+    year: 1890,
+    inventor: "Ernst Schröder",
+    nationality: "German",
+    inventorWiki: "https://en.wikipedia.org/wiki/Ernst_Schr%C3%B6der_(mathematician)",
+    work: "Vorlesungen über die Algebra der Logik, vol. 1",
+    description:
+      "Schröder introduced the ⊂ and ⊃ symbols for set inclusion in his 1890 lectures on the algebra of logic, replacing the less-than and greater-than signs previously used. The symbol was designed as a curved analogue of <, suggesting the analogy between numerical ordering and set containment.",
+    beforeThis:
+      "The symbols < and > were used for set inclusion, treating subset as analogous to 'less than.' Joseph Gergonne had introduced 'C' (from French 'contient') in 1817, but it never gained wide adoption.",
+    category: "set-theory",
+    funFact:
+      "Known as the 'Bicycle Professor' for cycling around Karlsruhe, Schröder published his three-volume Vorlesungen at his own expense. His subset notation is so intuitive it has survived unchanged for over 130 years.",
+    connections: ["element-of", "empty-set", "union", "intersection"],
+    inventorImage: "/inventors/ernst-schroder.jpg",
+  },
+  {
+    id: "superset",
+    symbol: "⊃",
+    latex: "\\supset",
+    name: "Superset",
+    year: 1890,
+    inventor: "Ernst Schröder",
+    nationality: "German",
+    inventorWiki: "https://en.wikipedia.org/wiki/Ernst_Schr%C3%B6der_(mathematician)",
+    work: "Vorlesungen über die Algebra der Logik, vol. 1",
+    description:
+      "Schröder introduced ⊃ alongside ⊂ in his 1890 lectures for the 'includes' relation — the converse of set inclusion. Russell later controversially repurposed ⊃ for material implication in Principia Mathematica, creating a notational ambiguity that persists in some textbooks.",
+    beforeThis:
+      "The greater-than sign > was used for the 'includes' relation. Gergonne had used a reversed C symbol in 1817 for the converse of containment.",
+    category: "set-theory",
+    funFact:
+      "Bertrand Russell borrowed Schröder's ⊃ symbol but repurposed it for material implication ('if…then') in Principia Mathematica (1910), creating one of the most confusing notational collisions in mathematics.",
+    connections: ["subset", "element-of", "implication"],
+    inventorImage: "/inventors/ernst-schroder.jpg",
+  },
+  {
+    id: "not-element-of",
+    symbol: "∉",
+    latex: "\\notin",
+    name: "Not Element Of",
+    year: 1939,
+    inventor: "Nicolas Bourbaki",
+    nationality: "French",
+    inventorWiki: "https://en.wikipedia.org/wiki/Nicolas_Bourbaki",
+    work: "Théorie des ensembles (Éléments de mathématique)",
+    description:
+      "The Bourbaki group introduced the negated membership symbol ∉ on page 4 of their 1939 Théorie des ensembles, the first published volume of their monumental Éléments de mathématique. The stroke through ∈ follows the general convention of negating a relation by crossing it with a diagonal line.",
+    beforeThis:
+      "Negation of set membership was expressed in words ('a is not in S') or with ad hoc logical negation applied to the ∈ symbol. There was no single standard notation.",
+    category: "set-theory",
+    funFact:
+      "Nicolas Bourbaki is not a real person but a pseudonym for a group of French mathematicians. The 1939 Théorie des ensembles was published as a 'Summary of Results' — a notation-setting pamphlet with no proofs. The actual proofs did not appear until decades later.",
+    connections: ["element-of", "empty-set", "logical-not", "not-equal"],
+  },
+  {
+    id: "aleph",
+    symbol: "ℵ",
+    latex: "\\aleph",
+    name: "Aleph Number",
+    year: 1893,
+    inventor: "Georg Cantor",
+    nationality: "German",
+    inventorWiki: "https://en.wikipedia.org/wiki/Georg_Cantor",
+    work: "Über eine elementare Frage der Mannigfaltigkeitslehre",
+    description:
+      "Cantor chose the Hebrew letter aleph to denote the cardinality of infinite sets, with ℵ₀ representing the cardinality of the natural numbers — the smallest infinity. His choice of a Hebrew letter was deliberate, meant to distinguish these transfinite numbers from all existing mathematical notation.",
+    beforeThis:
+      "There was no notation for different sizes of infinity. The concept that infinities could differ in size was itself revolutionary and widely resisted.",
+    category: "set-theory",
+    funFact:
+      "Cantor's work on infinite sets was so controversial that Leopold Kronecker called him a 'corrupter of youth.' The stress of academic opposition contributed to severe depression, and Cantor spent the last years of his life in a sanatorium.",
+    connections: ["infinity", "empty-set", "element-of"],
+  },
+  // ── Number Theory ──────────────────────────────────────
+  {
+    id: "modular-congruence",
+    symbol: "≡",
+    latex: "\\equiv",
+    name: "Modular Congruence",
+    year: 1801,
+    inventor: "Carl Friedrich Gauss",
+    nationality: "German",
+    inventorWiki: "https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss",
+    work: "Disquisitiones Arithmeticae",
+    description:
+      "Gauss introduced the triple-bar symbol ≡ to denote congruence of integers modulo a number, writing in Latin: 'We shall denote congruence of numbers by this sign, ≡.' This transformed number theory from a collection of ad hoc results into a systematic discipline.",
+    beforeThis:
+      "Remainder relationships were described verbally in Latin prose. Euler and others worked with divisibility properties without a compact symbolic framework.",
+    category: "number-theory",
+    funFact:
+      "Gauss wrote the Disquisitiones Arithmeticae at age 21. He considered number theory the 'queen of mathematics' and this book its crown jewel.",
+    connections: ["equals", "factorial"],
+    inventorImage: "/inventors/carl-friedrich-gauss.jpg",
+  },
+  {
+    id: "euler-totient",
+    symbol: "φ(n)",
+    latex: "\\varphi(n)",
+    name: "Euler's Totient Function",
+    year: 1801,
+    inventor: "Carl Friedrich Gauss",
+    nationality: "German",
+    inventorWiki: "https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss",
+    work: "Disquisitiones Arithmeticae",
+    description:
+      "While Euler first studied this function (counting integers less than n that are coprime to n) in 1763, he used the letter π for it. Gauss introduced the now-standard φ notation in article 38 of the Disquisitiones Arithmeticae. The name 'totient' was coined much later by J.J. Sylvester in 1879.",
+    beforeThis:
+      "Euler used the Greek letter π for this function in a 1784 publication. Before Euler, the concept of counting coprime integers was described verbally without any dedicated notation.",
+    category: "number-theory",
+    funFact:
+      "Three different mathematicians shaped this function across 116 years: Euler defined it (1763), Gauss gave it the φ symbol (1801), and Sylvester named it the 'totient' (1879).",
+    connections: ["modular-congruence", "factorial", "function-notation"],
+    inventorImage: "/inventors/carl-friedrich-gauss.jpg",
+  },
+  {
+    id: "floor-function",
+    symbol: "⌊x⌋",
+    latex: "\\lfloor x \\rfloor",
+    name: "Floor Function",
+    year: 1808,
+    inventor: "Carl Friedrich Gauss",
+    nationality: "German",
+    inventorWiki: "https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss",
+    work: "Theorematis arithmetici demonstratio nova",
+    description:
+      "Gauss introduced bracket notation [x] for the greatest integer less than or equal to x in his third proof of quadratic reciprocity. The modern half-bracket symbols ⌊x⌋ and ⌈x⌉ were introduced by Kenneth Iverson in 1962 in his book 'A Programming Language' (which spawned APL).",
+    beforeThis:
+      "The concept of 'integer part' existed but had no standard symbol. Legendre used the concept when proving his formula for prime factorization of factorials, but described it verbally.",
+    category: "number-theory",
+    funFact:
+      "Iverson's typesetter created the ⌊⌋ symbols by simply shaving off the tops and bottoms of square brackets. This clever hack became one of the most recognizable symbols in computer science.",
+    connections: ["modular-congruence", "factorial"],
+    inventorImage: "/inventors/carl-friedrich-gauss.jpg",
+  },
+  {
+    id: "divides",
+    symbol: "|",
+    latex: "\\mid",
+    name: "Divides",
+    year: 1927,
+    inventor: "Edmund Landau",
+    nationality: "German",
+    inventorWiki: "https://en.wikipedia.org/wiki/Edmund_Landau",
+    work: "Vorlesungen über Zahlentheorie",
+    description:
+      "Landau published the vertical bar notation a|b (read 'a divides b') in his 1927 number theory lectures. The vertical bar elegantly mirrors the fraction bar, suggesting the division relationship. G.H. Hardy had used the same notation in unpublished 1925 seminar notes, but Landau's publication standardized it.",
+    beforeThis:
+      "Divisibility was expressed in words ('a divides b' or 'a is a factor of b') or through explicit equations like 'b = ka for some integer k.' No standard symbolic shorthand existed.",
+    category: "number-theory",
+    funFact:
+      "Landau was forced out of his professorship at Göttingen in 1933 when Nazi students boycotted his lectures. One of the 20th century's greatest number theorists was silenced by politics.",
+    connections: ["modular-congruence", "division", "factorial"],
+    inventorImage: "/inventors/edmund-landau.jpg",
+  },
+  {
+    id: "absolute-value",
+    symbol: "|x|",
+    latex: "|x|",
+    name: "Absolute Value",
+    year: 1841,
+    inventor: "Karl Weierstrass",
+    nationality: "German",
+    inventorWiki: "https://en.wikipedia.org/wiki/Karl_Weierstrass",
+    work: "Zur Theorie der Potenzreihen",
+    description:
+      "Weierstrass introduced the vertical bar notation |x| for absolute value in an 1841 paper on power series, though the paper was not published until 1894. The notation provides a clean way to express the magnitude or distance from zero of a real or complex number.",
+    beforeThis:
+      "Absolute value was described verbally as 'the magnitude of' or 'the numerical value of.' Some authors used 'mod' as an abbreviation.",
+    category: "number-theory",
+    funFact:
+      "Weierstrass was a famous late bloomer: he spent 15 years teaching at secondary schools before obtaining a university position at age 40, yet went on to become the 'father of modern analysis.'",
+    connections: ["less-than", "greater-than", "equals"],
+    inventorImage: "/inventors/karl-weierstrass.jpg",
+  },
+  // ── Arithmetic ──────────────────────────────────────────
+  {
+    id: "dot-multiply",
+    symbol: "·",
+    latex: "\\cdot",
+    name: "Dot (Multiplication)",
+    year: 1698,
+    inventor: "Gottfried Wilhelm Leibniz",
+    nationality: "German",
+    inventorWiki: "https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz",
+    work: "Letter to Johann Bernoulli (July 29, 1698)",
+    description:
+      "Leibniz proposed the centered dot as an alternative multiplication symbol in a letter to Johann Bernoulli, writing: 'I do not like × as a symbol for multiplication, as it is easily confounded with x… often I simply relate two quantities by an interposed dot.' The dot offered cleaner notation that avoided confusion with the variable x.",
+    beforeThis:
+      "The cross symbol × introduced by William Oughtred in 1631 was the standard, but it caused confusion with the variable x. Juxtaposition (placing quantities side by side) was also common.",
+    category: "arithmetic",
+    funFact:
+      "In the same letter, Leibniz also explained his use of the colon for ratio, writing 'in designating ratio I use not one point but two points' — thus a single letter established two notational conventions still used today.",
+    connections: ["times", "division"],
+    inventorImage: "/inventors/gottfried-wilhelm-leibniz.jpg",
+  },
+  {
+    id: "ratio",
+    symbol: ":",
+    latex: ":",
+    name: "Ratio Sign",
+    year: 1684,
+    inventor: "Gottfried Wilhelm Leibniz",
+    nationality: "German",
+    inventorWiki: "https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz",
+    work: "Acta Eruditorum",
+    description:
+      "Leibniz used the colon for both ratio and division in his 1684 publication in the Acta Eruditorum. He later explained: 'in designating ratio I use not one point but two points, which I use at the same time for division,' distinguishing it from the single dot he used for multiplication.",
+    beforeThis:
+      "Ratios were expressed verbally or with Oughtred's double colon notation (::). The fraction bar was used for division. Some writers used a closing parenthesis or the letter 'D'.",
+    category: "arithmetic",
+    funFact:
+      "In many European countries, the colon is still the standard symbol for division (e.g., 6:3 = 2), while English-speaking countries adopted the obelus ÷ instead — a notational divide that mirrors the Leibniz–Newton rivalry.",
+    connections: ["division", "dot-multiply", "equals"],
+    inventorImage: "/inventors/gottfried-wilhelm-leibniz.jpg",
+  },
+  {
+    id: "approx-equal",
+    symbol: "≈",
+    latex: "\\approx",
+    name: "Approximately Equal",
+    year: 1892,
+    inventor: "Alfred George Greenhill",
+    nationality: "British",
+    inventorWiki: "https://en.wikipedia.org/wiki/Alfred_George_Greenhill",
+    work: "The Applications of Elliptic Functions",
+    description:
+      "Greenhill introduced the double-tilde symbol ≈ for approximate equality in his 1892 treatise on elliptic functions. The symbol elegantly suggests an equals sign that is 'not quite straight,' visually conveying the idea of near-equality.",
+    beforeThis:
+      "The single tilde ~ was used for approximation, which was ambiguous since it also meant 'similar to' in geometry. Some writers spelled out 'approximately' or used a dot over the equals sign.",
+    category: "algebra",
+    funFact:
+      "Greenhill was a professor at the Royal Military Academy at Woolwich and was knighted in 1908. His primary research was in ballistics and the trajectories of spinning projectiles — a rare mathematician whose work was literally weaponized.",
+    connections: ["equals", "not-equal", "similarity"],
+  },
+  {
+    id: "proportional",
+    symbol: "∝",
+    latex: "\\propto",
+    name: "Proportional To",
+    year: 1768,
+    inventor: "William Emerson",
+    nationality: "English",
+    inventorWiki: "https://en.wikipedia.org/wiki/William_Emerson_(mathematician)",
+    work: "The Doctrine of Fluxions (3rd edition)",
+    description:
+      "Emerson introduced the stylized symbol ∝ to denote proportionality in the third edition of his calculus textbook, replacing the cumbersome verbal and symbolic conventions previously used to express proportional relationships.",
+    beforeThis:
+      "Proportionality was expressed using the double colon notation (::), as in 'a:b :: c:d' meaning 'a is to b as c is to d.' This convention was introduced by William Oughtred in 1631.",
+    category: "algebra",
+    funFact:
+      "Emerson was a notoriously eccentric recluse who failed as a teacher but became a prolific author of mathematics textbooks. He reportedly dressed so oddly that on a visit to London, he was mistaken for a beggar.",
+    connections: ["equals", "times", "division"],
+  },
+  {
+    id: "logarithm",
+    symbol: "log",
+    latex: "\\log",
+    name: "Logarithm",
+    year: 1624,
+    inventor: "Johannes Kepler",
+    nationality: "German",
+    inventorWiki: "https://en.wikipedia.org/wiki/Johannes_Kepler",
+    work: "Chilias Logarithmorum",
+    description:
+      "Kepler was the first to use the abbreviation 'Log.' in his 1624 table of logarithms. John Napier had invented logarithms themselves in 1614 and coined the word from Greek 'logos' (ratio) and 'arithmos' (number), but wrote the concept out in full. The modern lowercase 'log' without a period appeared in Oughtred's 1647 Clavis Mathematicae.",
+    beforeThis:
+      "Napier described logarithms verbally and through tables without a symbolic abbreviation. The full Latin word 'logarithmus' was written out, or values were simply looked up in published tables.",
+    category: "algebra",
+    funFact:
+      "Kepler estimated that logarithms saved him years of computation while preparing the Rudolphine Tables of planetary positions. He personally calculated an entirely new set of logarithmic tables for his work.",
+    connections: ["euler-e", "exponent", "variable-x"],
+    inventorImage: "/inventors/johannes-kepler.jpg",
+  },
+  // ── Calculus ────────────────────────────────────────────
+  {
+    id: "nabla",
+    symbol: "∇",
+    latex: "\\nabla",
+    name: "Nabla (Del Operator)",
+    year: 1837,
+    inventor: "William Rowan Hamilton",
+    nationality: "Irish",
+    inventorWiki: "https://en.wikipedia.org/wiki/William_Rowan_Hamilton",
+    work: "Transactions of the Royal Irish Academy, Vol. XVII",
+    description:
+      "Hamilton first used the nabla symbol in 1837 as a general operator symbol, developing it into the vector differential operator for gradients, divergences, and curls through his quaternion theory. P. G. Tait standardized the name 'nabla' in his 1867 treatise on quaternions.",
+    beforeThis:
+      "There was no compact notation for vector differential operations. Partial derivatives with respect to each spatial variable were written out separately.",
+    category: "calculus",
+    funFact:
+      "The name 'nabla' was suggested by encyclopedist William Robertson Smith because the symbol resembles an ancient Phoenician harp called a 'nevel.' Tait and Maxwell used the word humorously in private letters, even composing puns about the operator.",
+    connections: ["partial-derivative", "derivative", "integral"],
+    inventorImage: "/inventors/william-rowan-hamilton.jpg",
+  },
+  {
+    id: "prime-notation",
+    symbol: "f′(x)",
+    latex: "f'(x)",
+    name: "Prime Notation (Lagrange)",
+    year: 1797,
+    inventor: "Joseph-Louis Lagrange",
+    nationality: "Italian-French",
+    inventorWiki: "https://en.wikipedia.org/wiki/Joseph-Louis_Lagrange",
+    work: "Théorie des fonctions analytiques",
+    description:
+      "Lagrange introduced the prime-mark notation f'(x) for the first derivative and f''(x) for the second in his 1797 treatise. He called them 'fonctions dérivées' (derived functions), coining the very word 'derivative.' The notation offered a clean algebraic alternative to both Leibniz's dy/dx and Newton's dot notation.",
+    beforeThis:
+      "Two competing systems existed: Leibniz's dy/dx notation and Newton's dot notation (dots placed above variables). Both carried philosophical commitments to infinitesimals or fluxions that Lagrange sought to eliminate.",
+    category: "calculus",
+    funFact:
+      "Lagrange's French terminology gave us the word 'derivative' itself — he named f'(x) the 'fonction prime' and called the process 'derivation.' Napoleon called him 'the lofty pyramid of the mathematical sciences.'",
+    connections: ["derivative", "limit", "function-notation"],
+    inventorImage: "/inventors/joseph-louis-lagrange.jpg",
+  },
+  {
+    id: "contour-integral",
+    symbol: "∮",
+    latex: "\\oint",
+    name: "Contour Integral",
+    year: 1917,
+    inventor: "Arnold Sommerfeld",
+    nationality: "German",
+    inventorWiki: "https://en.wikipedia.org/wiki/Arnold_Sommerfeld",
+    work: "Annalen der Physik, Vol. 53",
+    description:
+      "Sommerfeld introduced the integral sign with a small circle through it to denote integration around a closed curve. The circle visually represents the closed nature of the path, elegantly distinguishing closed-path integrals from ordinary ones.",
+    beforeThis:
+      "Mathematicians wrote the word 'closed' or described the closed contour verbally alongside a standard integral sign ∫. E. B. Wilson placed a small circle below the integral sign in 1901.",
+    category: "calculus",
+    funFact:
+      "Though a theoretical physicist, Sommerfeld holds the record for mentoring the most Nobel Prize-winning physicists — seven of his doctoral students won the Nobel Prize, including Heisenberg, Pauli, Debye, and Bethe.",
+    connections: ["integral", "derivative", "partial-derivative"],
+    inventorImage: "/inventors/arnold-sommerfeld.jpg",
+  },
+  {
+    id: "epsilon-delta",
+    symbol: "ε-δ",
+    latex: "\\varepsilon\\text{-}\\delta",
+    name: "Epsilon-Delta Definition",
+    year: 1861,
+    inventor: "Karl Weierstrass",
+    nationality: "German",
+    inventorWiki: "https://en.wikipedia.org/wiki/Karl_Weierstrass",
+    work: "Lectures at the University of Berlin",
+    description:
+      "Weierstrass formalized the rigorous epsilon-delta definition of limits in his 1861 Berlin lectures: for every ε > 0 there exists a δ > 0 such that closeness of input guarantees closeness of output. This framework placed calculus on an unshakable logical foundation.",
+    beforeThis:
+      "Cauchy used informal epsilon arguments in his 1821 Cours d'analyse. Newton spoke of 'ultimate ratios' and Leibniz of infinitesimals, but none achieved Weierstrass's full logical rigor.",
+    category: "calculus",
+    funFact:
+      "Weierstrass never published these foundational ideas himself — they spread entirely through handwritten student lecture notes passed from person to person, making them perhaps the most influential unpublished work in mathematics.",
+    connections: ["limit", "derivative", "integral"],
+    inventorImage: "/inventors/karl-weierstrass.jpg",
+  },
+  // ── Constants ───────────────────────────────────────────
+  {
+    id: "golden-ratio",
+    symbol: "φ",
+    latex: "\\varphi",
+    name: "Golden Ratio (Phi)",
+    year: 1910,
+    inventor: "Mark Barr",
+    nationality: "American",
+    inventorWiki: "https://en.wikipedia.org/wiki/Mark_Barr",
+    work: "Reported in Theodore Andrea Cook's The Curves of Life (1914)",
+    description:
+      "Mark Barr proposed the Greek letter φ for the golden ratio around 1910, choosing it as the first letter of the name Phidias, the ancient Greek sculptor celebrated for the Parthenon. The notation was published by Theodore Cook in 1914.",
+    beforeThis:
+      "The golden ratio was called the 'divine proportion' (after Pacioli, 1509) or 'golden section' (after Martin Ohm, ~1835) but had no standard symbol. Some mathematicians used τ (tau, from 'tomé,' meaning 'the cut').",
+    category: "constants",
+    funFact:
+      "Mark Barr was primarily an inventor of calculating machines, not a mathematician. He won a gold medal at the 1900 Paris World's Fair for an extremely accurate engraving machine.",
+    connections: ["pi-constant", "radical"],
+  },
+  {
+    id: "euler-mascheroni",
+    symbol: "γ",
+    latex: "\\gamma",
+    name: "Euler-Mascheroni Constant",
+    year: 1735,
+    inventor: "Leonhard Euler",
+    nationality: "Swiss",
+    inventorWiki: "https://en.wikipedia.org/wiki/Leonhard_Euler",
+    work: "De Progressionibus harmonicis observationes",
+    description:
+      "Euler first defined this constant — the limiting difference between the harmonic series and the natural logarithm — in 1735, computing it to 6 decimal places. He used the letters C and O for it. The now-standard symbol γ was introduced by Carl Anton Bretschneider in 1835.",
+    beforeThis:
+      "The constant had no standard symbol. Euler used C, Mascheroni used A. The relationship between the harmonic series and logarithm was known but not identified as a named constant before Euler.",
+    category: "constants",
+    funFact:
+      "Despite being computed to trillions of digits, nobody knows whether γ is rational or irrational. It is one of the most fundamental unsolved problems in mathematics.",
+    connections: ["euler-e", "infinity", "summation"],
+    inventorImage: "/inventors/leonhard-euler.jpg",
+  },
 ];
 
 export const equations: Equation[] = [
