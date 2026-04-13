@@ -33,11 +33,11 @@ test.describe("Command Palette", () => {
     await expect(page.getByTestId("command-palette")).not.toBeVisible();
   });
 
-  test("empty query shows all 64 symbols", async ({ page }) => {
+  test("empty query shows all 66 symbols", async ({ page }) => {
     await page.goto("/");
     await page.getByTestId("search-button").click();
     const results = page.getByTestId("command-palette-results");
-    await expect(results.locator("button")).toHaveCount(64);
+    await expect(results.locator("button")).toHaveCount(66);
   });
 
   test("typing filters by name", async ({ page }) => {

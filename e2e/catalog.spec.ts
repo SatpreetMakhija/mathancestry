@@ -11,9 +11,9 @@ test.describe("Catalog Page", () => {
     );
   });
 
-  test("renders all 64 symbol cards", async ({ page }) => {
+  test("renders all 66 symbol cards", async ({ page }) => {
     const cards = page.locator('a[href^="/symbol/"]');
-    await expect(cards).toHaveCount(64);
+    await expect(cards).toHaveCount(66);
   });
 
   test("each card has symbol, name, year, inventor, and category badge", async ({
@@ -37,7 +37,7 @@ test.describe("Catalog Page", () => {
 
   test("filtering by category reduces visible cards", async ({ page }) => {
     const allCards = await page.locator('a[href^="/symbol/"]').count();
-    expect(allCards).toBe(64);
+    expect(allCards).toBe(66);
 
     await page.locator("button", { hasText: "Calculus" }).click();
     const filteredCards = await page.locator('a[href^="/symbol/"]').count();
@@ -50,10 +50,10 @@ test.describe("Catalog Page", () => {
   }) => {
     await page.locator("button", { hasText: "Calculus" }).click();
     const filtered = await page.locator('a[href^="/symbol/"]').count();
-    expect(filtered).toBeLessThan(64);
+    expect(filtered).toBeLessThan(66);
 
     await page.locator("button", { hasText: /^All$/ }).click();
-    await expect(page.locator('a[href^="/symbol/"]')).toHaveCount(64);
+    await expect(page.locator('a[href^="/symbol/"]')).toHaveCount(66);
   });
 
   test("sort by Name changes card order", async ({ page }) => {

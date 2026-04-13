@@ -38,6 +38,8 @@ const SYMBOLS_TO_TEST = [
   { id: "contour-integral", name: "Contour Integral", inventor: "Arnold Sommerfeld", year: "1917" },
   { id: "epsilon-delta", name: "Epsilon-Delta Definition", inventor: "Karl Weierstrass", year: "1861" },
   { id: "golden-ratio", name: "Golden Ratio (Phi)", inventor: "Mark Barr", year: "1910" },
+  { id: "determinant", name: "Determinant (Vertical Bars)", inventor: "Arthur Cayley", year: "1841" },
+  { id: "cross-product", name: "Cross Product (Vectors)", inventor: "Josiah Willard Gibbs", year: "1881" },
 ];
 
 test.describe("Symbol Detail Page", () => {

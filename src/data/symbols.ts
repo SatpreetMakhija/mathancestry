@@ -1290,6 +1290,45 @@ export const symbols: MathSymbol[] = [
     connections: ["euler-e", "infinity", "summation"],
     inventorImage: "/inventors/leonhard-euler.jpg",
   },
+  // ── Linear Algebra ─────────────────────────────────────
+  {
+    id: "determinant",
+    symbol: "|A|",
+    latex: "\\begin{vmatrix} a & b \\\\ c & d \\end{vmatrix}",
+    name: "Determinant (Vertical Bars)",
+    year: 1841,
+    inventor: "Arthur Cayley",
+    nationality: "British",
+    inventorWiki: "https://en.wikipedia.org/wiki/Arthur_Cayley",
+    work: "On a theorem in the geometry of position (Cambridge Mathematical Journal)",
+    description:
+      "Cayley introduced vertical bars on both sides of an array to denote its determinant in an 1841 paper, published when he was just 20 years old. The notation elegantly distinguishes the determinant (a scalar value) from the matrix itself (an array of numbers).",
+    beforeThis:
+      "Determinants were computed using explicit expansion of terms. Cauchy had developed the theory and the name 'determinant' by 1815, but used no special notation for the array. Leibniz studied the concept from the 1690s without modern notation.",
+    category: "algebra",
+    funFact:
+      "Cayley published this paper as a 20-year-old undergraduate at Cambridge. He went on to publish nearly 1,000 mathematical papers — and his 1858 memoir on matrices essentially founded the entire field of matrix algebra.",
+    connections: ["equals", "variable-x"],
+  },
+  {
+    id: "cross-product",
+    symbol: "×",
+    latex: "\\times",
+    name: "Cross Product (Vectors)",
+    year: 1881,
+    inventor: "Josiah Willard Gibbs",
+    nationality: "American",
+    inventorWiki: "https://en.wikipedia.org/wiki/Josiah_Willard_Gibbs",
+    work: "Elements of Vector Analysis (privately printed, Yale)",
+    description:
+      "Gibbs introduced the × symbol for the vector cross product in his privately printed lecture notes at Yale. He called it the 'skew product,' writing α × β. The name 'cross product' was later coined by his student E. B. Wilson in the 1901 textbook Vector Analysis.",
+    beforeThis:
+      "Hamilton's quaternion product (1843) contained the cross product as one component, and Grassmann's exterior product (1844) was a related operation, but neither used × for it. There was no dedicated symbol for the vector product alone.",
+    category: "algebra",
+    funFact:
+      "Gibbs printed Elements of Vector Analysis privately and sent copies to over 130 scientists worldwide, conducting a one-man marketing campaign for vector notation. His system ultimately won out over Hamilton's quaternions, reshaping how physics is written.",
+    connections: ["times", "dot-multiply"],
+  },
 ];
 
 export const equations: Equation[] = [
