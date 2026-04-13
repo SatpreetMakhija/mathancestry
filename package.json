@@ -1,7 +1,7 @@
 {
   "name": "mathancestry",
   "private": true,
-  "version": "0.1.0-beta",
+  "version": "1.0.0",
   "description": "Explore the historical origins of mathematical symbols — who invented them, when, and what came before.",
   "type": "module",
   "scripts": {
