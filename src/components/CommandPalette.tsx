@@ -67,6 +67,42 @@ export default function CommandPalette({ open, onClose }: CommandPaletteProps) {
     [filtered, selectedIndex, goToSymbol, onClose],
   );
 
+  // Refs so the document-level listener always reads fresh values
+  const filteredRef = useRef(filtered);
+  const selectedIndexRef = useRef(selectedIndex);
+  filteredRef.current = filtered;
+  selectedIndexRef.current = selectedIndex;
+
+  // Document-level listener so Escape/arrows work even when input loses focus
+  useEffect(() => {
+    if (!open) return;
+
+    const handler = (e: KeyboardEvent) => {
+      // Don't double-handle events already caught by the input's onKeyDown
+      if (e.target === inputRef.current) return;
+
+      if (e.key === "Escape") {
+        e.preventDefault();
+        onClose();
+      } else if (e.key === "ArrowDown") {
+        e.preventDefault();
+        setSelectedIndex((i) =>
+          Math.min(i + 1, filteredRef.current.length - 1),
+        );
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        setSelectedIndex((i) => Math.max(i - 1, 0));
+      } else if (e.key === "Enter") {
+        e.preventDefault();
+        const sym = filteredRef.current[selectedIndexRef.current];
+        if (sym) goToSymbol(sym);
+      }
+    };
+
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, [open, onClose, goToSymbol]);
+
   if (!open) return null;
 
   return createPortal(
