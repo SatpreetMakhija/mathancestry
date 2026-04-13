@@ -1,6 +1,6 @@
 # MathAncestry
 
-![Beta](https://img.shields.io/badge/status-beta-blue)
+![v1.0.0](https://img.shields.io/badge/version-1.0.0-green)
 
 **Git blame for math notation.** Explore the historical origins of mathematical symbols — who invented them, when, and what came before.
 
@@ -28,4 +28,4 @@ npx playwright test  # e2e tests
 
 ## License
 
-TBD
+[MIT](LICENSE)
